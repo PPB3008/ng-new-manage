@@ -1,0 +1,22 @@
+.book-nav-item {
+    float: left;
+
+}    
+ul {
+    list-style: none;
+    padding: 0;
+}
+.book-nav-item a {
+    padding: 20px 50px;
+    transition: transform .2s ease-in;
+}
+
+.book-nav-item a:link {
+    text-decoration: none;
+    
+}
+
+.book-nav-item a:hover {
+    transform: scale(1.02);
+    box-shadow:3px 3px 8px  gray;
+}

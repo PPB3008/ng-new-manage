@@ -1,0 +1,33 @@
+ul {
+    display: flex;
+    list-style: none;
+}
+a:link {
+    text-decoration: none;
+}
+
+a:hover {
+    transform: scale(1.02);
+    box-shadow: 3px 3px 5px gray;
+}
+.book-item-img img {
+    width: 100%;
+}
+
+.book-item-wrapper {
+    margin: 0 25px;
+    display: block;
+    transition: transform .2s ease-in;
+    padding: 10px;
+    max-width: 200px;
+}
+
+.book-item-img {
+    max-width:180px;
+    max-height: 300px;
+}
+.book-item-wrapper h4,p,label {
+    text-align: center;
+    text-decoration: none;
+    color: #000;
+}
