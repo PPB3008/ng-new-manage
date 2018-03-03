@@ -3,5 +3,6 @@ export class Book {
     public name:string,
     public ID:number,
     public read:number,
-    public picURL:string){}
+    public picURL:string,
+    public left:number){}
 }

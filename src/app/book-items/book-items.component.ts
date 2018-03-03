@@ -6,16 +6,28 @@ import {Book} from './books'
   styleUrls: ['./book-items.component.css']
 })
 export class BookItemsComponent implements OnInit {
-  books=[];
+  public books=[];
+  public generalID:number;
+  picURL:string;
   @Input() name:string;
   @Input() ID:number;
-  @Input() srcnum:number;
   constructor() { 
     this.books=[
-      new Book("angular",12333,3058,"..\assets\images\working-with-data-in-wordpress-introduction-database-tables.jpg"),
-      new Book("angular2",12335,1207,"..\assets\images\working-with-data-in-wordpress-introduction-database-tables.jpg"),
-      new Book("angular3",12337,2636,"..\assets\images\working-with-data-in-wordpress-introduction-database-tables.jpg")
+      new Book("angular",12333,3058,"..\assets\images\working-with-data-in-wordpress-introduction-database-tables.jpg",50),
+      new Book("angular2",12335,1207,"..\assets\images\working-with-data-in-wordpress-introduction-database-tables.jpg",12),
+      new Book("angular3",12337,2636,"..\assets\images\working-with-data-in-wordpress-introduction-database-tables.jpg",10)
     ]
+  }
+  setSrc(){
+    document.querySelector("")
+  }
+  itemClick(book){
+    this.generalID=book.ID;
+    for(let bookIndex in this.books){
+      if(this.books[bookIndex].ID==this.generalID){
+        console.log(this.books[bookIndex]);
+      }
+    }
   }
 
   ngOnInit() {
