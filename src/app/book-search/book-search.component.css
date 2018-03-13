@@ -1,0 +1,45 @@
+.book-search {
+    height: 50px;
+    width: 250px;
+}
+.book-search-input {
+    float: left;
+    padding: 0;
+    margin: 0;
+    height: 100%;
+    width: auto;
+    border:1px solid gray;
+    border-radius:4px;  
+    font-size: 20px;
+}
+.book-search-btn {
+    margin-left: -51px;
+    float: left;
+    display: block;
+    height: 100%;
+    width: 50px;
+    border: 1px solid gray;
+    border-radius:4px; 
+    background-size:cover; 
+    background-image: url("/assets/icon/if_search-zoom-fit_2931190.svg")
+}
+
+.book-search-btn:hover {
+    opacity: .5;
+}
+
+.book-search:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+.book-search-longer {
+    /* animation: ani1 1s; */
+    width: 500px;
+}
+
+@keyframes ani1 {
+    from {width:250px;}
+    to {width: 500px;}
+}

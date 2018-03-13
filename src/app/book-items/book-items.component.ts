@@ -1,21 +1,33 @@
 import { Component, OnInit,Input } from '@angular/core';
-import {Book} from './books'
+import {Book} from './books';
+import {BookInfomationComponent} from '../book-infomation/book-infomation.component';
 @Component({
   selector: 'app-book-items',
   templateUrl: './book-items.component.html',
   styleUrls: ['./book-items.component.css']
 })
 export class BookItemsComponent implements OnInit {
-  books=[];
+  public books=[];
+  public generalID:number;
+  picURL:string;
   @Input() name:string;
   @Input() ID:number;
-  @Input() srcnum:number;
   constructor() { 
     this.books=[
-      new Book("angular",12333,3058,"..\assets\images\working-with-data-in-wordpress-introduction-database-tables.jpg"),
-      new Book("angular2",12335,1207,"..\assets\images\working-with-data-in-wordpress-introduction-database-tables.jpg"),
-      new Book("angular3",12337,2636,"..\assets\images\working-with-data-in-wordpress-introduction-database-tables.jpg")
+      new Book("angular",12333,3058,"..\assets\images\working-with-data-in-wordpress-introduction-database-tables.jpg",50),
+      new Book("angular2",12335,1207,"..\assets\images\working-with-data-in-wordpress-introduction-database-tables.jpg",12),
+      new Book("angular3",12337,2636,"..\assets\images\working-with-data-in-wordpress-introduction-database-tables.jpg",10)
     ]
+  }
+  setSrc(){
+    document.querySelector("")
+  }
+  itemClick(ID){
+    for(let bookIndex in this.books){
+      if(this.books[bookIndex].ID==ID){
+        
+      }
+    }
   }
 
   ngOnInit() {
