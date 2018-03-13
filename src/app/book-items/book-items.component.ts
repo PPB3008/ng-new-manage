@@ -1,6 +1,5 @@
 import { Component, OnInit,Input } from '@angular/core';
-import {Book} from './books';
-import {BookInfomationComponent} from '../book-infomation/book-infomation.component';
+import {Book} from './books'
 @Component({
   selector: 'app-book-items',
   templateUrl: './book-items.component.html',
@@ -22,10 +21,11 @@ export class BookItemsComponent implements OnInit {
   setSrc(){
     document.querySelector("")
   }
-  itemClick(ID){
+  itemClick(book){
+    this.generalID=book.ID;
     for(let bookIndex in this.books){
-      if(this.books[bookIndex].ID==ID){
-        
+      if(this.books[bookIndex].ID==this.generalID){
+        console.log(this.books[bookIndex]);
       }
     }
   }
