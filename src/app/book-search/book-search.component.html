@@ -1,13 +1,9 @@
-{{diagnostic}}
 <div class="book-search form-group">
-  <form #myForm="ngForm">
+  <form>
       <label for="book"></label>
-      <input type="text"  placeholder="book name" name="book" id="book" class="book-search-input form-control" [(ngModel)]="model.name" 
-      #name="ngModel" required>
-      <div [hidden]="name.valid || name.pristine"
-     class="alert alert-danger">Name is required</div>
+      <input type="text" #box placeholder="book name"  id="book" class="book-search-input form-control"  required>
+      <div class="alert alert-danger">Name is required</div>
       <p>{{ box.value }}</p>
       <button href="#" type="submit" class="book-search-btn btn">submit</button>
   </form>
-
 </div>
