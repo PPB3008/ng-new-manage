@@ -1,51 +1,56 @@
 import { Component, OnInit, Input ,Output  } from '@angular/core';
 import { Book } from '../book-items/books';
-import {BookItemsComponent} from '../book-items/book-items.component';
+import { BookItemsComponent } from '../book-items/book-items.component';
+import { ChangeDetectorRef } from '@angular/core';
+import { Injectable } from '@angular/core';
 @Component({
   selector: 'app-book-infomation',
   templateUrl: './book-infomation.component.html',
-  styleUrls: ['./book-infomation.component.css']
+  styleUrls: ['./book-infomation.component.css'],
 })
+
+@Injectable()
 export class BookInfomationComponent implements OnInit {
-  ID:number=0;
-  name:string="";
-  left:number=0;
-  read:number=0;
-  src:string="";
-  test=111;
-  books=[];
-  test1(){
-    this.test++;
-    console.log(this.test);
-    this.src=this.books[1].picURL;
+  public Books;
+  public stateBook={ID:0,name:"",left:0,read:0,src:""};
+  public books=[];
+  public stateID=0;
+  public ID=3;
+  takeData(){
+    this.books=this.Books.getBooks();
+    this.books.filter(bookIn=>{
+      (bookIn.ID==this.Books.state)&&(this.stateBook={ID:bookIn.ID,name:bookIn.name,left:bookIn.left,read:bookIn.read,src:bookIn.src});
+    })
+      this.ref.reattach();
+      this.render();
+      return;
   }
-  getData(ID:number){
-    this.books=this.info_book.getBooks();
-    for(let bookIndex in this.books){
-      if(this.books[bookIndex].ID==ID){
-        this.ID=this.books[bookIndex].ID;
-        this.name=this.books[bookIndex].name;
-        this.left=this.books[bookIndex].left;
-        this.read=this.books[bookIndex].read;
-        this.src=this.books[bookIndex].picURL;
-        console.log(this.name);
-        this.test1()  //=>作用域
-      }
-    }
+
+  getData(ID,Books){
+    this.Books=Books;
+    let stateID=ID;
+    this.takeData();
+  }
+
+  render(){
+    console.log(this.stateBook.name);
+    let info_nodes=document.querySelector(".book-info-title");
+    info_nodes.innerHTML=this.stateBook.name;
+    // Array.prototype.forEach.call((ele)=>{
+    //   ele.innerHTML=
+    // });
   }
   t1(){
-    setInterval(()=>{console.log(this.test+"test!",this.books)},10000);
+    setInterval(()=>{console.log(this.info_book.state+"test!")},5000);
   }
   
-  constructor(private info_book:Book) {
-    
-      // this.getData();
+  constructor(private info_book:Book,private ref: ChangeDetectorRef) {
+
   }
   ngOnInit() {
-    this.t1();
+    
   }
-  ngOnchange(){
+  ngDoCheck(){
 
   }
-
 }
