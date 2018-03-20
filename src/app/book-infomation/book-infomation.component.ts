@@ -12,16 +12,15 @@ import { Injectable } from '@angular/core';
 @Injectable()
 export class BookInfomationComponent implements OnInit {
   public Books;
-  public stateBook={ID:0,name:"",left:0,read:0,src:""};
+  public stateBook={ID:0,name:"",left:0,read:0,picURL:"",types:""};
   public books=[];
   public stateID=0;
   public ID=3;
   takeData(){
     this.books=this.Books.getBooks();
     this.books.filter(bookIn=>{
-      (bookIn.ID==this.Books.state)&&(this.stateBook={ID:bookIn.ID,name:bookIn.name,left:bookIn.left,read:bookIn.read,src:bookIn.src});
+      (bookIn.ID==this.Books.state)&&(this.stateBook={ID:bookIn.ID,name:bookIn.name,left:bookIn.left,read:bookIn.read,picURL:bookIn.picURL,types:bookIn.types});
     })
-      this.ref.reattach();
       this.render();
       return;
   }
@@ -33,12 +32,14 @@ export class BookInfomationComponent implements OnInit {
   }
 
   render(){
-    console.log(this.stateBook.name);
-    let info_nodes=document.querySelector(".book-info-title");
-    info_nodes.innerHTML=this.stateBook.name;
-    // Array.prototype.forEach.call((ele)=>{
-    //   ele.innerHTML=
-    // });
+    console.log(this.stateBook.types);
+    document.querySelector(".book-info-type").innerHTML=this.stateBook.types;
+    document.querySelector(".book-info-title").innerHTML=this.stateBook.name;
+    document.querySelector(".book-info-ID").innerHTML=this.stateBook.ID.toString();
+    document.querySelector(".book-info-left").innerHTML=this.stateBook.left.toString();
+    document.querySelector(".book-info-read").innerHTML=this.stateBook.read.toString();
+    
+    document.querySelector(".book-info-img-de").setAttribute("src",this.stateBook.picURL);  
   }
   t1(){
     setInterval(()=>{console.log(this.info_book.state+"test!")},5000);

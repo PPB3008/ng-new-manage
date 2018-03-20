@@ -11,3 +11,9 @@
     box-shadow: 3px 3px 8px gray;
     height: 100%;
 }
+
+.contact-btn {
+    background: blue;
+    color: white;
+    font-weight: bold;
+}

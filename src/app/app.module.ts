@@ -6,7 +6,15 @@ import { BookItemsComponent } from './book-items/book-items.component';
 import { Book } from './book-items/books';
 import { BookNavComponent } from './book-nav/book-nav.component';
 import { BookSearchComponent } from './book-search/book-search.component';
-import { BookInfomationComponent } from './book-infomation/book-infomation.component'
+import { BookInfomationComponent } from './book-infomation/book-infomation.component';
+import { PageNotFoundComponent } from './page-not-found.component';
+import { AppRoutingModule } from './app-routing.module';
+import { BookTypesComponent } from './book-types/book-types.component';
+import { BookTypes } from './book-types/book-types';
+import { bookTypesRouting } from './book-types/book-types-routing';
+import { ContactUsComponent } from './contact-us/contact-us.component';
+
+
 
 
 @NgModule({
@@ -15,14 +23,19 @@ import { BookInfomationComponent } from './book-infomation/book-infomation.compo
     BookItemsComponent,
     BookNavComponent,
     BookSearchComponent,
-    BookInfomationComponent
+    BookInfomationComponent,
+    PageNotFoundComponent,
+    BookTypesComponent,
+    ContactUsComponent
   ],
   imports: [
     FormsModule,
     ReactiveFormsModule,
-    BrowserModule
+    BrowserModule,
+    AppRoutingModule,
+    bookTypesRouting
   ],
-  providers: [Book],
+  providers: [Book,BookTypes],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

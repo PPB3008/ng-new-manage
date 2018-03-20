@@ -1,8 +1,12 @@
 <!--The content below is only a placeholder and can be replaced.-->
 <h1>test</h1>
-<app-book-search></app-book-search>
+<h2>Welcome to my book manage sys</h2>
 <app-book-nav class="app-book-nav"></app-book-nav>
-<app-book-items class="app-book-items"></app-book-items>
-<app-book-infomation class="app-book-infomation"></app-book-infomation>
+<!--<app-book-search></app-book-search>
+<app-book-items class="app-book-items"></app-book-items> -->
+<!-- <app-book-infomation class="app-book-infomation"></app-book-infomation>  -->
 
+<a class="contact-btn" [routerLink]="[{ outlets: { contactUs: ['contact']}}]" href="#">contact-us</a>
+<router-outlet name="contactUs"></router-outlet>
+<router-outlet></router-outlet>
 
