@@ -1,4 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
+import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { FormsModule,ReactiveFormsModule, NgModel } from '@angular/forms';
 import { AppComponent } from './app.component';
@@ -13,6 +14,7 @@ import { BookTypesComponent } from './book-types/book-types.component';
 import { BookTypes } from './book-types/book-types';
 import { bookTypesRouting } from './book-types/book-types-routing';
 import { ContactUsComponent } from './contact-us/contact-us.component';
+import { UsersComponent } from './users/users.component';
 
 
 
@@ -26,12 +28,14 @@ import { ContactUsComponent } from './contact-us/contact-us.component';
     BookInfomationComponent,
     PageNotFoundComponent,
     BookTypesComponent,
-    ContactUsComponent
+    ContactUsComponent,
+    UsersComponent
   ],
   imports: [
     FormsModule,
     ReactiveFormsModule,
     BrowserModule,
+    HttpClientModule,
     AppRoutingModule,
     bookTypesRouting
   ],
