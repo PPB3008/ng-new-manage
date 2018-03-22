@@ -5,7 +5,7 @@
       <input id="username" type="text" placeholder="username"
       required
       [(ngModel)]="username"  name="username" #nn="ngModel"
-      [dirty]="nn.dirty"/>
+      dirty="nn.dirty"/>
       <!-- <span>{{nn.valid}}</span> -->
       <!-- <span>{{nn.errors?.required}}</span> -->
       <div [hidden]="nn.valid||nn.pristine" class="alter alter-danger">input your username!</div>

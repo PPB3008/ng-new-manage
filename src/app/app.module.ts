@@ -15,6 +15,7 @@ import { BookTypes } from './book-types/book-types';
 import { bookTypesRouting } from './book-types/book-types-routing';
 import { ContactUsComponent } from './contact-us/contact-us.component';
 import { UsersComponent } from './users/users.component';
+import { ManagePageComponent } from './manage-page/manage-page.component';
 
 
 
@@ -29,7 +30,8 @@ import { UsersComponent } from './users/users.component';
     PageNotFoundComponent,
     BookTypesComponent,
     ContactUsComponent,
-    UsersComponent
+    UsersComponent,
+    ManagePageComponent
   ],
   imports: [
     FormsModule,
