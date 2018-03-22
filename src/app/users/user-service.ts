@@ -7,7 +7,15 @@ export class UserService {
     getUsers() {
         return this.http.get(this.userURL);
     }
-    constructor(private  http: HttpClient){
+    // getData(username,password) {
+    //     return this.getUsers()
+    //     .subscribe(data => {
+    //         Array.prototype.filter.call(data,(ele)=>{
+    //           return ele.username==username;
+    //         })
+    //     });
+    // }
+    constructor(private http: HttpClient){
     }
     ngOnInit(){
 
