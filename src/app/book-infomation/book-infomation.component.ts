@@ -3,6 +3,7 @@ import { Book } from '../book-items/books';
 import { BookItemsComponent } from '../book-items/book-items.component';
 import { ChangeDetectorRef } from '@angular/core';
 import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
 @Component({
   selector: 'app-book-infomation',
   templateUrl: './book-infomation.component.html',
@@ -45,7 +46,9 @@ export class BookInfomationComponent implements OnInit {
     setInterval(()=>{console.log(this.info_book.state+"test!")},5000);
   }
   
-  constructor(private info_book:Book,private ref: ChangeDetectorRef) {
+  constructor(private info_book:Book,
+    private ref: ChangeDetectorRef,
+    private http:HttpClient) {
 
   }
   ngOnInit() {

@@ -4,8 +4,13 @@ import { OnInit } from '@angular/core';
 @Injectable()
 export class UserService {
     userURL="assets/users/users.json";
+    userColloect="assets/users/users-collect.json"
     getUsers() {
         return this.http.get(this.userURL);
+
+    }
+    getUsersCollect(){
+        return this.http.get(this.userColloect);
     }
     // getData(username,password) {
     //     return this.getUsers()
