@@ -1,6 +1,6 @@
 <ul>
-  <li *ngFor="let book of books; let num=index">
-    <a (click)="itemClick(book)"  class="book-item-wrapper" href="javascript:void(0)" target="_blank">
+  <li *ngFor="let book of books; let num=index" >
+    <a (click)="itemClick(book)"  class="book-item-wrapper" > 
       <div class="book-item-img"><img src="{{book.picURL}}" alt=""></div>
       <div class="book-item-info">
         <h4>{{book.name}}</h4>
@@ -9,5 +9,8 @@
         <span class="book-info-state">{{collectJudge(book.ID)}}</span>
       </div>
     </a>
-</li>
+   
+  </li>
+  <!-- <router-outlet name="Info"></router-outlet>   -->
+  <app-book-infomation [useCollect]="collectState"></app-book-infomation>  
 </ul>

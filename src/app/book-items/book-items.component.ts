@@ -5,6 +5,7 @@ import { Injectable } from '@angular/core';
 import { ActivatedRoute, Router,ParamMap } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { UserService } from '../users/user-service';
+// import { BookItemsRouting } from './book-items-router';
 import 'rxjs/add/operator/switchMap';
 @Component({
   selector: 'app-book-items',
@@ -19,50 +20,39 @@ export class BookItemsComponent implements OnInit {
   public books=[];
   public generalID:number;
   public collect;
-  // public generalCollect={};
-  private collectState:string;
-  
+  public collectState:string;
   private picURL:string;
-  @Input() name:string;
-  @Input() ID:number;
-  constructor(public Books:Book,
-    public bookInfomationComponent:BookInfomationComponent,
-    private userService:UserService,
-    private route:ActivatedRoute,
-    private router:Router,
-    private http:HttpClient) { 
-      
-  }
-  
+
   itemClick(book) {
     this.generalID=book.ID;
     this.Books.changeState(book.ID);
     this.bookInfomationComponent.getData(book.ID,this.Books);
   }
   collectJudge(ID){
-      // console.log(this.collect.collect1)
-      // let collectState;
+      this.collectState=undefined;
       for(let x in this.collect){
-        return this.collect[x].forEach(element => {       
-          element==ID&&
-            this.collectState="您已选"
-this.collectState="您未选"
-            
-          
+        let hasCollect=this.collect[x].filter(element => {       
+          return element==ID;
         });
+        hasCollect==ID?this.collectState="您已定":this.collectState="您未定";
       }
-      // console.log(collectState);
-      console.log(this.collectState);
       return this.collectState;
   }
   preOrder() {
 
   }
+
+  constructor(public Books:Book,
+    public bookInfomationComponent:BookInfomationComponent,
+    private userService:UserService,
+    private route:ActivatedRoute,
+    private router:Router,
+    private http:HttpClient) { 
+  }
   ngOnInit() {
     let userCollect=this.userService.getUsersCollect();
     this.books=this.Books.getBooks();
-      this.route.paramMap.switchMap((params: ParamMap) =>
-      params.get('type'));
+    this.route.paramMap.switchMap((params: ParamMap)=>params.get('type'));
     userCollect.subscribe((data)=>this.collect=data);
     }
     

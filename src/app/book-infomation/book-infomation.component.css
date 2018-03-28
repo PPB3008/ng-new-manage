@@ -17,3 +17,13 @@
     height: 500px;
     transition: height 2s ease-in;
 }
+
+a {
+    display: block;
+    color: white;
+    background: black;
+}
+
+.disabled {
+    
+}
