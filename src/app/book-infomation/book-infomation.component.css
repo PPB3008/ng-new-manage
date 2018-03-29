@@ -18,12 +18,18 @@
     transition: height 2s ease-in;
 }
 
-a {
+button {
+    padding: 10px;
     display: block;
     color: white;
     background: black;
+    border: 0;
 }
 
 .disabled {
-    
+    background: gray;
+}
+
+button:hover {
+    opacity: .7;
 }

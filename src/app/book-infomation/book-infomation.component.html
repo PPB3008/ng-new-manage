@@ -1,11 +1,11 @@
 <div class="book-info">
   <div class="book-info-img">
-    <img class="book-info-img-de" src="{{src}}" alt="">
+    <img class="book-info-img-de" src="{{stateBook.picURL}}" alt="">
   </div>
-  <h2 id="name"  class="book-info-title"></h2>
-  <p id="ID"      class="book-info-ID"></p>
-  <span id="left" class="book-info-left"></span>
-  <span id="read" class="book-info-read"></span>
-  <span id="type" class="book-info-type"></span>
-  <a href="#" >预定</a>
+  <h2 id="name"  class="book-info-title">{{stateBook.name}}</h2>
+  <p id="ID"      class="book-info-ID">{{stateBook.ID}}</p>
+  <span id="left" class="book-info-left">{{stateBook.left}}</span>
+  <span id="read" class="book-info-read">{{stateBook.read}}</span>
+  <span id="type" class="book-info-type">{{stateBook.types}}</span>
+  <button type="button" (click)="order()" [class.disabled]="disableJudge()" [disabled]="disableJudge()">预定</button>
 </div>
