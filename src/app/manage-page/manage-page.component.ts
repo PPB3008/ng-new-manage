@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Book } from '../book-items/books';
+
 @Component({
   selector: 'app-manage-page',
   templateUrl: './manage-page.component.html',

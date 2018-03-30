@@ -16,6 +16,8 @@ import { bookTypesRouting } from './book-types/book-types-routing';
 import { ContactUsComponent } from './contact-us/contact-us.component';
 import { UsersComponent } from './users/users.component';
 import { ManagePageComponent } from './manage-page/manage-page.component';
+import { BookManageComponent } from './manage-page/book-manage/book-manage.component';
+import { UserLensComponent } from './manage-page/user-lens/user-lens.component';
 
 
 
@@ -31,7 +33,9 @@ import { ManagePageComponent } from './manage-page/manage-page.component';
     BookTypesComponent,
     ContactUsComponent,
     UsersComponent,
-    ManagePageComponent
+    ManagePageComponent,
+    BookManageComponent,
+    UserLensComponent
   ],
   imports: [
     FormsModule,

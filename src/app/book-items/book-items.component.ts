@@ -1,8 +1,8 @@
-import { Component, OnInit,Input } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { Book } from './books';
 // import { BookInfomationComponent } from '../book-infomation/book-infomation.component';
 import { Injectable } from '@angular/core';
-import { ActivatedRoute, Router,ParamMap } from '@angular/router';
+import { ActivatedRoute, Router, ParamMap } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { UserService } from '../users/user-service';
 // import { BookItemsRouting } from './book-items-router';
