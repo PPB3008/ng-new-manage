@@ -1,5 +1,21 @@
 <ul>
-  <li *ngFor="let index in userLens">
-    <ul></ul>
+  <li *ngFor="let index of userLens">
+    <h1>{{index.ID}}</h1>
+      <ul>
+        <li *ngFor="let x of index.bookLen">
+          {{x[0]+":"}}{{x[1]+"到"+x[2]}}
+          <a (click)="giveBack(index.bookLen,x)">还书</a>
+          <div>
+              <a >续借</a>
+              <div > 
+                  <label for="resume-input">输入续借日期：</label>
+                  <input class="resume-input" type="text" #resume/>
+                  <button type="button" (click)="resumeLen(x,resume.value)">提交</button>
+              </div>
+          </div>
+          <div>
+          </div>        
+        </li>         
+      </ul>
   </li>
 </ul>

@@ -9,7 +9,7 @@ import { Book } from '../book-items/books';
 })
 export class ManagePageComponent implements OnInit {
 
-  constructor() { }
+  constructor(private book:Book) { }
 
   ngOnInit() {
   }

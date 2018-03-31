@@ -1,5 +1,6 @@
 import { Component, OnInit, OnChanges } from '@angular/core';
 import { UserLensService } from './user-lens.service';
+import { ChangeDetectorRef } from '@angular/core';  
 @Component({
   selector: 'app-user-lens',
   templateUrl: './user-lens.component.html',
@@ -8,12 +9,26 @@ import { UserLensService } from './user-lens.service';
 })
 export class UserLensComponent implements OnInit{
   private userLens;
-  getData() {
-    this.userLens.forEach(ele => {
-      
-    });
+  // private selectBook;
+  getKeys(item){
+    return Object.keys(item);
   }
-  constructor(private userLensService:UserLensService) { }
+  giveBack(ele,x){
+    let index=ele.indexOf(x);
+    let backConfirm=window.confirm("请确定已归还");
+    backConfirm&&ele.splice(index,1);
+  }
+  resumeLen(x,resume){
+    let resumeConfirm=window.confirm("请确定要续租");
+    resumeConfirm&&(x[2]=resume);    
+    this.changeDetectorRef.markForCheck();  
+    this.changeDetectorRef.detectChanges();  
+  }
+  resumeControl(){
+    
+  }
+  constructor(private userLensService:UserLensService,
+              private changeDetectorRef:ChangeDetectorRef) { }
 
   ngOnInit() {
     let userLens=this.userLensService.getUserLens();
