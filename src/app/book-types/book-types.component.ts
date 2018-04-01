@@ -9,13 +9,14 @@ import { bookTypesRouting } from './book-types-routing';
 })
 
 export class BookTypesComponent implements OnInit {
-  bookTypes=[];
+  private bookTypes;
   constructor(private BookTypes:BookTypes,private Book:Book) { }
   typeClick(types){
     
   }
   ngOnInit() {
-    this.bookTypes=this.BookTypes.getTypes();
+    let typesSub=this.BookTypes.getTypes();
+    typesSub.subscribe((data)=>this.bookTypes=data);
   }
 
 }

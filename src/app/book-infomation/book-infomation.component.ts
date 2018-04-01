@@ -63,9 +63,10 @@ export class BookInfomationComponent implements OnInit,OnChanges{
     private userService: UserService) {
   }
   ngOnInit() {
-    this.Books=this.info_book.getBooks();
+    let bookSub=this.info_book.getBooks();
     let userCollect=this.userService.getUsersCollect();
     userCollect.subscribe((data)=>this.collect=data);
+    bookSub.subscribe((data)=>this.Books=data);
     // this.disableJudge();
   }
   ngOnChanges(){
