@@ -30,6 +30,10 @@ button {
     background: gray;
 }
 
+.hard-disable {
+    display: none;
+}
+
 button:hover {
     opacity: .7;
 }

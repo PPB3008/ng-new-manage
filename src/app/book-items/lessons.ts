@@ -1,14 +1,14 @@
 import { Injectable } from '@angular/core';
-import { BookTypes } from '../book-types/book-types';
+import { lessonType } from '../book-types/lesson-types';
 import { Component,OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 @Component({
-    providers:[BookTypes]
+    providers:[lessonType]
   })
 
 @Injectable()
-export class Book {
-    bookURL="assets/book/books.json"
+export class Lessons {
+    lessonURL="assets/lesson/lessons.json"
 
     private types;
     // books: 
@@ -26,18 +26,18 @@ export class Book {
     // ];
 
     public state:0;
-    getBooks() {
-        return this.http.get(this.bookURL);
+    getLessons() {
+        return this.http.get(this.lessonURL);
     }
 
     changeState(state){
         this.state=state;
     }
-    constructor(public BookTypes:BookTypes,
+    constructor(public LessonTypes:lessonType,
         private http:HttpClient){
     }
     ngOninit(){
-        let typesSub=this.BookTypes.getTypes();
+        let typesSub=this.LessonTypes.getTypes();
         typesSub.subscribe((data)=>this.types=data)
         
             for(let typeItem in this.types){

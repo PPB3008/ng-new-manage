@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 @Injectable()
-export class BookTypes {
-    private bookTypeURL="assets/book/book-types.json";
+export class lessonType {
+    private lessonTypeURL="assets/lesson/lesson-types.json";
     // types:Array<{typeID:string,typeName:string}>=[
     //     {typeID:"A",typeName:"马克思主义、列宁主义、毛泽东思想、邓小平理论"},
     //     {typeID:"B",typeName:"哲学、宗教"},
@@ -29,7 +29,7 @@ export class BookTypes {
     // ]
 
     getTypes(){
-        return this.http.get(this.bookTypeURL);
+        return this.http.get(this.lessonTypeURL);
     }
     constructor(private http:HttpClient){
     }

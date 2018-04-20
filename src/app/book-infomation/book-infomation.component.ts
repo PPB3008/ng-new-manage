@@ -1,5 +1,5 @@
 import { Component, OnInit, Input ,Output ,OnChanges  } from '@angular/core';
-import { Book } from '../book-items/books';
+import { Lessons } from '../book-items/lessons';
 import { BookItemsComponent } from '../book-items/book-items.component';
 import { ChangeDetectorRef } from '@angular/core';
 import { Injectable } from '@angular/core';
@@ -12,8 +12,8 @@ import { UserService } from '../users/user-service';
 })
 export class BookInfomationComponent implements OnInit,OnChanges{
   @Input() nowState:number;
-  private Books;
-  private stateBook={ID:0,name:"",left:0,read:0,picURL:"",types:""};
+  private lessons;
+  private stateLesson={ID:0,name:"",left:0,read:0,picURL:"",types:""};
   private collectState:string;
   private hasCollect:boolean=false;
   private collect;
@@ -22,14 +22,14 @@ export class BookInfomationComponent implements OnInit,OnChanges{
       return;
     }
     else{
-      this.Books.forEach(bookIn=>{
-        (bookIn.ID==this.nowState)&&(this.stateBook={
-          ID:bookIn.ID,
-          name:bookIn.name,
-          left:bookIn.left,
-          read:bookIn.read,
-          picURL:bookIn.picURL,
-          types:bookIn.types});
+      this.lessons.forEach(lessonIn=>{
+        (lessonIn.ID==this.nowState)&&(this.stateLesson={
+          ID:lessonIn.ID,
+          name:lessonIn.name,
+          left:lessonIn.left,
+          read:lessonIn.read,
+          picURL:lessonIn.picURL,
+          types:lessonIn.types});
       })
     }
       return;
@@ -49,24 +49,24 @@ export class BookInfomationComponent implements OnInit,OnChanges{
   }
   order() {
       for(let x in this.collect){
-        if(!(Array.prototype.includes.call(this.collect[x],this.stateBook.ID))){
-          this.collect[x].push(this.stateBook.ID);
+        if(!(Array.prototype.includes.call(this.collect[x],this.stateLesson.ID))){
+          this.collect[x].push(this.stateLesson.ID);
         }
         else{
           return;
         }      
     }
   }
-  constructor(private info_book:Book,
+  constructor(private info_lesson:Lessons,
     private ref: ChangeDetectorRef,
     private http: HttpClient,
     private userService: UserService) {
   }
   ngOnInit() {
-    let bookSub=this.info_book.getBooks();
+    let lessonSub=this.info_lesson.getLessons();
     let userCollect=this.userService.getUsersCollect();
     userCollect.subscribe((data)=>this.collect=data);
-    bookSub.subscribe((data)=>this.Books=data);
+    lessonSub.subscribe((data)=>this.lessons=data);
     // this.disableJudge();
   }
   ngOnChanges(){
