@@ -29,3 +29,8 @@ a {
     background-color: red;
     color: white
 }
+
+
+.type-block {
+    display: block;
+}

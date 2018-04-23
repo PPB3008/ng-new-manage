@@ -1,15 +1,15 @@
 import { Component, OnInit } from '@angular/core';
-import { Book } from '../book-items/books';
+import { Lessons } from '../book-items/lessons';
 
 @Component({
   selector: 'app-manage-page',
   templateUrl: './manage-page.component.html',
   styleUrls: ['./manage-page.component.css'],
-  providers: [Book]
+  providers: [Lessons]
 })
 export class ManagePageComponent implements OnInit {
 
-  constructor(private book:Book) { }
+  constructor(private lessons:Lessons) { }
 
   ngOnInit() {
   }

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { BookTypes } from './book-types';
-import { Book } from '../book-items/books';
+import { lessonType } from './lesson-types';
+import { Lessons } from '../book-items/lessons';
 import { bookTypesRouting } from './book-types-routing';
 @Component({
   selector: 'app-book-types',
@@ -9,14 +9,14 @@ import { bookTypesRouting } from './book-types-routing';
 })
 
 export class BookTypesComponent implements OnInit {
-  private bookTypes;
-  constructor(private BookTypes:BookTypes,private Book:Book) { }
+  private lessonTypes;
+  constructor(private lessontype:lessonType,private lessons:Lessons) { }
   typeClick(types){
     
   }
   ngOnInit() {
-    let typesSub=this.BookTypes.getTypes();
-    typesSub.subscribe((data)=>this.bookTypes=data);
+    let typesSub=this.lessontype.getTypes();
+    typesSub.subscribe((data)=>this.lessonTypes=data);
   }
 
 }

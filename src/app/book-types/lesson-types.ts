@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 @Injectable()
 export class lessonType {
-    private lessonTypeURL="assets/lesson/lesson-types.json";
+    private lessonTypeURL="assets/lesson/lesson-type.json";
     // types:Array<{typeID:string,typeName:string}>=[
     //     {typeID:"A",typeName:"马克思主义、列宁主义、毛泽东思想、邓小平理论"},
     //     {typeID:"B",typeName:"哲学、宗教"},

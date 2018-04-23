@@ -1,15 +1,25 @@
+
 <ul>
-  <li *ngFor="let lesson of lessons; let num=index" >
-    <a (click)="itemClick(lesson)"  class="book-item-wrapper" > 
-      <div class="book-item-img"><img src="{{book.picURL}}" alt=""></div>
-      <div class="book-item-info">
-        <h4>{{lesson.name}}</h4>
-        <p>{{lesson.ID}}</p>
-        <label for="numbers of audiunce">{{lesson.read}}</label>
-        <span class="book-info-state">{{info.collectJudge(lesson.ID)}}</span>
-      </div>
-      
-  </li>
-  <!-- <router-outlet name="Info"></router-outlet>   -->
+	<li class="type-block" *ngFor="let type of lessonTypes;let typeNum=index" >
+		<h2>{{type.typeID}}</h2>
+		<h3>{{type.typeName}}</h3>
+		<ul class="type-item-block">
+				<!-- let show=lesson.types==type.typeID; -->
+			<li *ngFor="let lesson of lessons; let num=index;">
+				<div class="lesson-wrapper"  *ngIf=show(lesson.types,type.typeID)>
+					<a (click)="itemClick(lesson)"  class="book-item-wrapper"> 
+						<div class="book-item-img"><img src="{{lesson.picURL}}" alt=""></div>
+						<div class="book-item-info">
+						<h4>{{lesson.name}}</h4>
+						<p>{{lesson.ID}}</p>
+						<span class="book-info-state">{{info.collectJudge(lesson.ID)}}</span>
+						</div>
+					</a>
+				</div>
+
+			</li>
+			<app-book-infomation [nowState]="generalID" #info></app-book-infomation>  
+		</ul>
+ 	</li>
 </ul>
-<app-book-infomation [nowState]="generalID" #info></app-book-infomation>  
+

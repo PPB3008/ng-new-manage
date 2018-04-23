@@ -1,5 +1,5 @@
 import { Component, OnInit,Input} from '@angular/core';
-import{ Book } from '../book-items/books'
+import{ Lessons } from '../book-items/lessons'
 import { BookItemsComponent } from '../book-items/book-items.component'
 @Component({
   selector: 'app-book-search',
