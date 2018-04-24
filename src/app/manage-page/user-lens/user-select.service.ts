@@ -2,11 +2,11 @@ import { HttpClient } from '@angular/common/http';
 import { OnInit } from '@angular/core';
 import { Injectable } from '@angular/core';
 @Injectable()
-export class UserLensService {
-    userLensURL="assets/users/users-len-books.json";
-    getUserLens() {
+export class UserSelectService {
+    userSelectURL="assets/users/users-select.json";
+    getUserSelect() {
         return this.http.
-            get(this.userLensURL);
+            get(this.userSelectURL);
     }
     constructor(private http:HttpClient){
     }

@@ -1,11 +1,11 @@
 import { Component, OnInit, OnChanges } from '@angular/core';
-import { UserLensService } from './user-lens.service';
+import { UserSelectService } from './user-select.service';
 import { ChangeDetectorRef } from '@angular/core';  
 @Component({
   selector: 'app-user-lens',
   templateUrl: './user-lens.component.html',
   styleUrls: ['./user-lens.component.css'],
-  providers: [UserLensService]
+  providers: [UserSelectService]
 })
 export class UserLensComponent implements OnInit{
   private userLens;
@@ -27,12 +27,12 @@ export class UserLensComponent implements OnInit{
   resumeControl(){
     
   }
-  constructor(private userLensService:UserLensService,
+  constructor(private userSelectService:UserSelectService,
               private changeDetectorRef:ChangeDetectorRef) { }
 
   ngOnInit() {
-    let userLens=this.userLensService.getUserLens();
-    userLens.subscribe((data)=>{this.userLens=data;});
+    let userSele=this.userSelectService.getUserSelect();
+    userSele.subscribe((data)=>{this.userLens=data;});
     // console.log(this.userLens);
   }
 }
