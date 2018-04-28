@@ -37,33 +37,46 @@
 
 <div class="user-block">
 	<h2>用户信息</h2>
-	<ul class="user-stage" *ngFor="let item of user;">
-	  <li class="username">{{item.username}}</li>
-	  <li class="name">{{item.name}}</li>
-	  <li class="id">{{item.ID}}</li>
-	  <li class="authority">{{item.authority}}</li>
+	<ul class="user-stage">
+		<li *ngFor="let userItem of user;">
+			<div class="username">{{userItem.username}}</div>
+			<div class="name">{{userItem.name}}</div>
+			<div class="id">{{userItem.ID}}</div>
+			<div class="authority">{{userItem.authority}}</div>
+		</li>
 	</ul>
 </div>
 
 
 <div class="user-collect-block">
 	<h2>收藏夹</h2>
+	<div class="add-collect-group-block">
+		<a>添加收藏夹</a>
+		<label for="add-collect-group">输入收藏夹名：</label>
+		<input name="add-collect-group" type="text"/>
+	</div>
 	<div class="user-collect">
-		<ul class="type-item-block">
-				<!-- let show=lesson.types==type.typeID; -->
-			<li *ngFor="let lesson of lessonGroup; let num=index;">
-				<div class="lesson-wrapper">
-					<a (click)="itemClick(lesson)"  class="book-item-wrapper"> 
-						<div class="book-item-img"><img src="{{lesson.picURL}}" alt=""></div>
-						<div class="book-item-info">
-							<h4>{{lesson.name}}</h4>
-							<h5>{{lesson.ID}}</h5>
-							<span class="book-info-state">{{info.collectJudge(lesson.ID)}}</span>
-						</div>
-					</a>
-				</div>
+		<ul class="collect-group-block">
+			<li *ngFor="let collectKey of userCollectKeys; let num=index;" >
+				<h3>{{collectKey}}</h3>
+				<ul class="collect-item-block">
+					<li *ngFor="let collectLesson of userCollect[collectKey];">						
+						<a (click)="itemClick(collectLesson)"  class="lesson-wrapper"> 
+							<div class="lesson-img"><img src="{{collectLesson.picURL}}" alt=""></div>
+							<div class="lesson-info">
+								<h4>{{collectLesson.name}}</h4>
+								<h5>{{collectLesson.ID}}</h5>
+								<span class="lesson-state">{{info.collectJudge(collectLesson.ID)}}</span>
+							</div>
+						</a>
+
+						<a (click)="cacelCollect()">取消收藏</a>
+					</li>
+					  
+				</ul>
 			</li>
-			<!-- <app-book-infomation [nowState]="generalID" #info></app-book-infomation>   -->
+				<!-- let show=lesson.types==type.typeID; -->
 		</ul>
+		<app-book-infomation [nowState]="generalID" #info></app-book-infomation>
 	</div>
 </div>

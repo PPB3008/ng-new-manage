@@ -10,6 +10,7 @@ import { UserService } from '../users/user-service';
   selector: 'app-book-infomation',
   templateUrl: './book-infomation.component.html',
   styleUrls: ['./book-infomation.component.css'],
+  providers: [Lessons,UserSelectService]
 })
 export class BookInfomationComponent implements OnInit,OnChanges{
 	@Input() nowState:number;

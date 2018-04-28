@@ -75,7 +75,7 @@ export class BookItemsComponent implements OnInit {
 		let typesSub=this.lessontype.getTypes();
 		userCollect.subscribe((data)=>this.collect=data);
 		lessonSub.subscribe((data)=>this.lessons=data);
-		userSub.subscribe((data)=>this.userSelect);
+		userSub.subscribe((data)=>this.userSelect=data);
 		typesSub.subscribe((data)=>this.lessonTypes=data);
 	}
 }
