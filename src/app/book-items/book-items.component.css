@@ -38,3 +38,11 @@ a:hover {
     display: flex;
     flex-direction: column;
 }
+.lesson-wrapper {
+    width: 200px;
+}
+
+
+app-book-infomation {
+    width: 500px;
+}

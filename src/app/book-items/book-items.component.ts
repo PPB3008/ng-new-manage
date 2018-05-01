@@ -28,6 +28,7 @@ export class BookItemsComponent implements OnInit {
 	public collectState:string;
 	private picURL:string;
 	private terms=[1,2,3,4,5,6,7,8];
+	private nowTypeState;
 	itemClick(lesson) {
 	this.generalID=lesson.ID;
 	// this.Lessons.changeState(book.ID);
@@ -36,20 +37,14 @@ export class BookItemsComponent implements OnInit {
 		this.terms=this.lessons.term;
 	}
 	
-	queueJudge(queueValue) {
-		// switch (queueValue){
-		// 	case "lessonTypes":
-		// 		return this.lessonTypes;
-				
-		// 	case "terms":
-		// 		return this.terms;
-				
-		// }
-		
+	queueJudge() {
+		// this.nowTypeState = document.querySelector('#item-queue').value;
+		this.reset();
 	}
-	reset(value){
-		console.log(value);
-		return value;
+
+	
+	reset(){
+		return this.nowTypeState;
 	}
 	show(lesson,type){
 		// lesson==type?this.shown=true:this.shown=false;

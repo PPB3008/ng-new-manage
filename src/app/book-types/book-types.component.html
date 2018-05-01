@@ -1,5 +1,5 @@
 <ul>
-  <li *ngFor="let types of bookTypes; let num=index">
+  <li *ngFor="let types of lessonTypes; let num=index">
     <a (click)="typeClick(types)" [routerLink]="['/types',types.typeID]" routerLinkActive="active" class="book-type-wrapper" href="#">
       <div class="book-type-info">
         <h4>{{types.typeName}}</h4>

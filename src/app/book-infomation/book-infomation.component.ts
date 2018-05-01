@@ -2,6 +2,7 @@ import { Component, OnInit, Input ,Output ,OnChanges  } from '@angular/core';
 import { Lessons } from '../book-items/lessons';
 import { UserSelectService } from '../manage-page/user-lens/user-select.service';
 import { BookItemsComponent } from '../book-items/book-items.component';
+import { lessonType } from '../book-types/lesson-types';
 import { ChangeDetectorRef } from '@angular/core';
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
@@ -10,7 +11,7 @@ import { UserService } from '../users/user-service';
   selector: 'app-book-infomation',
   templateUrl: './book-infomation.component.html',
   styleUrls: ['./book-infomation.component.css'],
-  providers: [Lessons,UserSelectService]
+  providers: [Lessons,UserSelectService,lessonType]
 })
 export class BookInfomationComponent implements OnInit,OnChanges{
 	@Input() nowState:number;
@@ -20,6 +21,7 @@ export class BookInfomationComponent implements OnInit,OnChanges{
 	private hasCollect:boolean=false;
 	private collect;
 	private userSelect;
+	private types;
   	takeData(){
 		if(!this.nowState){
 			return;
@@ -63,7 +65,11 @@ export class BookInfomationComponent implements OnInit,OnChanges{
 	selectJudge() {
 		
 	}
-
+	typeTransform(type) {
+		for(let x in this.types) {
+			// x.typeID == type
+		}
+	}
 	select() {
 		if(!(Array.prototype.includes.call(this.nowState,this.userSelect.lesson))){
 			// this.userSelect.lesson.push(this.nowState);
@@ -77,16 +83,21 @@ export class BookInfomationComponent implements OnInit,OnChanges{
 		private ref: ChangeDetectorRef,
 		private http: HttpClient,
 		private userService: UserService,
-		private userSelectService: UserSelectService) {
+		private userSelectService: UserSelectService,
+		private LessonType: lessonType) {
 	}
 	ngOnInit() {
 		let lessonSub=this.info_lesson.getLessons();
 		let userCollect=this.userService.getUsersCollect();
 		let selectSub=this.userSelectService.getUserSelect();
+		let lessonTypeSub = this.LessonType.getTypes();
 		selectSub.subscribe((data)=>this.userSelect=data);
 		userCollect.subscribe((data)=>this.collect=data);
 		lessonSub.subscribe((data)=>this.lessons=data);
 		// this.disableJudge();
+		lessonTypeSub.subscribe((data)=>{this.types=data;
+			// this.typeTransform(type);
+		});
 	}
 	ngOnChanges(){
 		this.takeData();

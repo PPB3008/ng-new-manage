@@ -1,8 +1,7 @@
 .book-info {
-    width: 40%;
+    width: 500px;
     height: 100px;
     transition: height 2s ease-in;
-    background: red;
 }
 .book-info-img {
     float: left;
@@ -20,7 +19,7 @@
 
 button {
     padding: 10px;
-    display: block;
+    display: inline-block;
     color: white;
     background: black;
     border: 0;

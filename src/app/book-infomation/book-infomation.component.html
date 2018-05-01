@@ -4,9 +4,9 @@
   </div>
   <h2 class="book-info-title">{{stateLesson.name}}</h2>
   <p class="book-info-ID">{{stateLesson.ID}}</p>
-  <span class="book-info-left">{{stateLesson.left}}</span>
-  <span class="book-info-read">{{stateLesson.read}}</span>
-  <span class="book-info-type">{{stateLesson.types}}</span>
-  <button type="button" (click)="order()" [class.disabled]="disableJudge()" [disabled]="disableJudge()">预定</button>
+  <span class="book-info-left">名额还剩:{{stateLesson.left}}  </span>
+  <span class="book-info-read">已有{{stateLesson.read}}看过  </span>
+  <div class="book-info-type">{{typeTransform(stateLesson.types)}}</div>
+  <button type="button" (click)="order()" [class.disabled]="disableJudge()" [disabled]="disableJudge()">收藏</button>
   <button type="button" (click)="select()" [class.disabled]="selectJudge()" [disabled]="selectJudge()">选课</button>
 </div>
