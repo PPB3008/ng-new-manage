@@ -1,7 +1,8 @@
 .book-info {
     width: 500px;
-    height: 100px;
     transition: height 2s ease-in;
+    border: 2px solid blue;
+    border-radius: 5px; 
 }
 
 .book-info:after {

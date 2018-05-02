@@ -10,11 +10,13 @@ a:hover {
     transform: scale(1.02);
     box-shadow: 3px 3px 5px gray;
 }
-.book-item-img img {
+.lesson-img img {
     width: 100%;
 }
 
-.book-item-wrapper {
+.lesson-item-wrapper {
+    display: block;
+    width: 200px;
     margin: 0 25px;
     display: block;
     border:3px red solid;
@@ -24,7 +26,7 @@ a:hover {
     max-width: 200px;
 }
 
-.book-item-img {
+.lesson-img {
     max-width:180px;
     max-height: 300px;
 }
@@ -45,8 +47,3 @@ a:hover {
     display: flex;
 }
 
-app-book-infomation {
-    width: 500px;
-    border: 2px solid red;
-    border-radius: 5px;
-}

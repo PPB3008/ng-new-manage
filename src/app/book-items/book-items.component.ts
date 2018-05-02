@@ -48,7 +48,7 @@ export class BookItemsComponent implements OnInit {
 
 	
 	reset(value){
-		console.log(value);
+		// console.log(value);
 		return value;
 	}
 	show(lesson,type){
@@ -60,6 +60,7 @@ export class BookItemsComponent implements OnInit {
 	}
 	termType() {
 		this.lessons.forEach(ele => {
+			// console.log(ele);
 			switch(ele.term) {
 				case 1||2:
 					this.termtype.first.push(ele);
@@ -71,6 +72,7 @@ export class BookItemsComponent implements OnInit {
 					this.termtype.fourth.push(ele);	
 			}
 		})
+		console.log(this.termtype);
 	}
 	constructor(public Lessons:Lessons,
 		private userService:UserService,

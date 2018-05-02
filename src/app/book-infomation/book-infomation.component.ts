@@ -16,12 +16,13 @@ import { UserService } from '../users/user-service';
 export class BookInfomationComponent implements OnInit,OnChanges{
 	@Input() nowState:number;
 	private lessons;
-	private stateLesson={ID:0,name:"",left:0,read:0,picURL:"",types:""};
+	private stateLesson={ID:0,name:"",left:0,read:0,picURL:"",types:"",teacher:""};
 	private collectState:string;
 	private hasCollect:boolean=false;
 	private collect;
 	private userSelect;
 	private types;
+	private select;
   	takeData(){
 		if(!this.nowState){
 			return;
@@ -34,7 +35,8 @@ export class BookInfomationComponent implements OnInit,OnChanges{
 				left:lessonIn.left,
 				read:lessonIn.read,
 				picURL:lessonIn.picURL,
-				types:lessonIn.types});
+				types:lessonIn.types,
+				teacher:lessonIn.teacher});
 			})
 		}
 		return;
@@ -52,7 +54,7 @@ export class BookInfomationComponent implements OnInit,OnChanges{
 		this.collectJudge(this.nowState);
 		return this.hasCollect;
 	}
-	order() {
+	addCollect() {
 		for(let x in this.collect){
 			if(!(Array.prototype.includes.call(this.collect[x],this.stateLesson.ID))){
 				this.collect[x].push(this.stateLesson.ID);
@@ -70,7 +72,8 @@ export class BookInfomationComponent implements OnInit,OnChanges{
 			// x.typeID == type
 		}
 	}
-	select() {
+	addSelect() {
+		console.log(this.userSelect.lesson);
 		if(!(Array.prototype.includes.call(this.nowState,this.userSelect.lesson))){
 			// this.userSelect.lesson.push(this.nowState);
 			console.log(this.userSelect.lesson);
@@ -91,7 +94,9 @@ export class BookInfomationComponent implements OnInit,OnChanges{
 		let userCollect=this.userService.getUsersCollect();
 		let selectSub=this.userSelectService.getUserSelect();
 		let lessonTypeSub = this.LessonType.getTypes();
-		selectSub.subscribe((data)=>this.userSelect=data);
+		selectSub.subscribe(data=>{
+			this.userSelect=data;
+		});
 		userCollect.subscribe((data)=>this.collect=data);
 		lessonSub.subscribe((data)=>this.lessons=data);
 		// this.disableJudge();

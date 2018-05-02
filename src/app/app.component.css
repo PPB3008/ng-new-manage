@@ -18,7 +18,3 @@
     font-weight: bold;
 }
 
-router-outlet app-contact-us {
-    border: 1px solid red;
-    border-radius: 5px; 
-}
