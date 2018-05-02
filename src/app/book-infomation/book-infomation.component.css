@@ -3,6 +3,12 @@
     height: 100px;
     transition: height 2s ease-in;
 }
+
+.book-info:after {
+    display: table;
+    content: "";
+    clear: both;
+}
 .book-info-img {
     float: left;
     height: 200px;

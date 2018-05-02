@@ -29,6 +29,10 @@ export class BookItemsComponent implements OnInit {
 	private picURL:string;
 	private terms=[1,2,3,4,5,6,7,8];
 	private nowTypeState;
+	private termtype = {"first":[],
+						"second":[],
+						"third":[],
+						"fourth":[]};
 	itemClick(lesson) {
 	this.generalID=lesson.ID;
 	// this.Lessons.changeState(book.ID);
@@ -39,12 +43,13 @@ export class BookItemsComponent implements OnInit {
 	
 	queueJudge() {
 		// this.nowTypeState = document.querySelector('#item-queue').value;
-		this.reset();
+		// this.reset();
 	}
 
 	
-	reset(){
-		return this.nowTypeState;
+	reset(value){
+		console.log(value);
+		return value;
 	}
 	show(lesson,type){
 		// lesson==type?this.shown=true:this.shown=false;
@@ -53,7 +58,20 @@ export class BookItemsComponent implements OnInit {
 		console.log(lesson==type);
 		return lesson==type;
 	}
-
+	termType() {
+		this.lessons.forEach(ele => {
+			switch(ele.term) {
+				case 1||2:
+					this.termtype.first.push(ele);
+				case 3||4:
+					this.termtype.second.push(ele);	
+				case 5||6:
+					this.termtype.third.push(ele);	
+				case 7||8:
+					this.termtype.fourth.push(ele);	
+			}
+		})
+	}
 	constructor(public Lessons:Lessons,
 		private userService:UserService,
 		private route:ActivatedRoute,
@@ -69,8 +87,11 @@ export class BookItemsComponent implements OnInit {
 		let userSub=this.userSelectService.getUserSelect();
 		let typesSub=this.lessontype.getTypes();
 		userCollect.subscribe((data)=>this.collect=data);
-		lessonSub.subscribe((data)=>this.lessons=data);
+		lessonSub.subscribe((data)=>{
+			this.lessons=data;
+			this.termType();
+		});
 		userSub.subscribe((data)=>this.userSelect=data);
-		typesSub.subscribe((data)=>this.lessonTypes=data);
+		typesSub.subscribe((data)=>this.lessonTypes=data);		
 	}
 }

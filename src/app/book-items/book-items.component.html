@@ -1,50 +1,95 @@
 <select name="排序" id="item-queue" (onchange)="queueJudge()" #queue>
-		<option value="lessonTypes">lessonTypes</option>
-		<option value="terms">terms</option>
-	
+		<option value="terms">terms</option>	
+	<option value="lessonTypes">lessonTypes</option>
 </select>
-<div [ngSwitch]="reset()">
-	<ul>
-		<li class="type-block" *ngFor="let type of lessonTypes;let queueNum=index" >
-			<h2>{{type.typeID}}</h2>
-			<h3>{{type.typeName}}</h3>
-			<ul class="type-item-block">
-					<!-- let show=lesson.types==type.typeID; -->
-				<li *ngFor="let lesson of lessons; let num=index;">
-					<div class="lesson-wrapper">
-						<a (click)="itemClick(lesson)"  class="book-item-wrapper"> 
-							<div class="book-item-img"><img src="{{lesson.picURL}}" alt=""></div>
-							<div class="book-item-info">
-								<h4>{{lesson.name}}</h4>
-								<h5>{{lesson.ID}}</h5>
-								<span class="book-info-state">{{info.collectJudge(lesson.ID)}}</span>
-							</div>
-						</a>
-					</div>
-				</li>
-				<app-book-infomation [nowState]="generalID" #info></app-book-infomation>  
-			</ul>
-		</li>
-	</ul>
-
-	<!-- <ul *ngSwitchCase="'terms'">
-		<li class="type-block" *ngFor="let type of queueJudge(queue.value);let queueNum=index" >
-			<h3>第{{type}}学期</h3>
-			<ul class="type-item-block">
-				<li *ngFor="let lesson of lessons; let num=index;">
-					<div class="lesson-wrapper" >
-						<a (click)="itemClick(lesson)"  class="book-item-wrapper"> 
-							<div class="book-item-img"><img src="{{lesson.picURL}}" alt=""></div>
-							<div class="book-item-info">
-								<h4>{{lesson.name}}</h4>
-								<h5>{{lesson.ID}}</h5>
-								<span class="book-info-state">{{info.collectJudge(lesson.ID)}}</span>
-							</div>
-						</a>
-					</div>
-				</li>
-				<app-book-infomation [nowState]="generalID" #info></app-book-infomation>  
-			</ul>
-		</li>
-	</ul> -->
+<div [ngSwitch]="queue.value">
+	<div *ngSwitchCase="'lessonTypes'">
+		<ul>
+			<li class="type-block" *ngFor="let type of lessonTypes;let queueNum=index" >
+				<h2>{{type.typeID}}</h2>
+				<h3>{{type.typeName}}</h3>
+				<ul class="type-item-block">
+						<!-- let show=lesson.types==type.typeID; -->
+					<li *ngFor="let lesson of lessons; let num=index;">
+						<div class="lesson-wrapper">
+							<a (click)="itemClick(lesson)"  class="book-item-wrapper"> 
+								<div class="book-item-img"><img src="{{lesson.picURL}}" alt=""></div>
+								<div class="book-item-info">
+									<h4>{{lesson.name}}</h4>
+									<h5>{{lesson.ID}}</h5>
+									<span class="book-info-state">{{info.collectJudge(lesson.ID)}}</span>
+								</div>
+							</a>
+						</div>
+					</li>
+				</ul>
+			</li>
+			<app-book-infomation [nowState]="generalID" #info></app-book-infomation>  
+		</ul>
+	</div>
+	<div *ngSwitchCase="'terms'">
+			{{reset(queue.value)}}
+		<ul>
+			<li>
+				<h3>第一学期</h3>
+				<ul>
+					<li *ngFor="let lessonItem of termtype.first">
+													<a (click)="itemClick(collectLesson)"  class="lesson-wrapper"> 
+								<div class="lesson-img"><img src="{{collectLesson.picURL}}" alt=""></div>
+								<div class="lesson-info">
+									<h4>{{collectLesson.name}}</h4>
+									<h5>{{collectLesson.ID}}</h5>
+									<span class="lesson-state">{{info.collectJudge(collectLesson.ID)}}</span>
+								</div>
+							</a>
+					</li>
+				</ul>
+			</li>
+			<li>
+				<h3>第二学期</h3>
+				<ul>
+					<li *ngFor="let lessonItem of termtype.second">
+													<a (click)="itemClick(collectLesson)"  class="lesson-wrapper"> 
+								<div class="lesson-img"><img src="{{collectLesson.picURL}}" alt=""></div>
+								<div class="lesson-info">
+									<h4>{{collectLesson.name}}</h4>
+									<h5>{{collectLesson.ID}}</h5>
+									<span class="lesson-state">{{info.collectJudge(collectLesson.ID)}}</span>
+								</div>
+							</a>
+					</li>
+				</ul>
+			</li>
+			<li>
+				<h3>第三学期</h3>
+				<ul>
+					<li *ngFor="let lessonItem of termtype.third">
+													<a (click)="itemClick(collectLesson)"  class="lesson-wrapper"> 
+								<div class="lesson-img"><img src="{{collectLesson.picURL}}" alt=""></div>
+								<div class="lesson-info">
+									<h4>{{collectLesson.name}}</h4>
+									<h5>{{collectLesson.ID}}</h5>
+									<span class="lesson-state">{{info.collectJudge(collectLesson.ID)}}</span>
+								</div>
+							</a>
+					</li>
+				</ul>
+			</li>
+			<li>
+				<h3>第四学期</h3>
+				<ul>
+					<li *ngFor="let lessonItem of termtype.fourth">
+													<a (click)="itemClick(collectLesson)"  class="lesson-wrapper"> 
+								<div class="lesson-img"><img src="{{collectLesson.picURL}}" alt=""></div>
+								<div class="lesson-info">
+									<h4>{{collectLesson.name}}</h4>
+									<h5>{{collectLesson.ID}}</h5>
+									<span class="lesson-state">{{info.collectJudge(collectLesson.ID)}}</span>
+								</div>
+							</a>
+					</li>
+				</ul>
+			</li>
+		</ul>
+	</div>
 </div>

@@ -1,5 +1,5 @@
 ul {
-    display: flex;
+    /* display: flex; */
     list-style: none;
 }
 a:link {
@@ -35,14 +35,18 @@ a:hover {
 }
 
 .type-block {
-    display: flex;
     flex-direction: column;
 }
 .lesson-wrapper {
     width: 200px;
 }
 
+.type-item-block {
+    display: flex;
+}
 
 app-book-infomation {
     width: 500px;
+    border: 2px solid red;
+    border-radius: 5px;
 }

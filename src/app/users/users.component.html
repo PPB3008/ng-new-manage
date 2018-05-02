@@ -1,82 +1,75 @@
-<!-- <h1>users</h1>
-<form (ngSubmit)="onSubmit" action="post" #myForm="ngForm">
-  <div class="form-group"> 
-      <label for="username">username</label>
-      <input id="username" type="text" placeholder="username"
-      required
-      [(ngModel)]="username"  name="username" #nn="ngModel"
-      dirty="nn.dirty"/>
-      <span>{{nn.valid}}</span>
-      <span>{{nn.errors?.required}}</span>
-      <div [hidden]="nn.valid||nn.pristine" class="alter alter-danger">input your username!</div>
-      <div [hidden]="nn.errors?.required" class="alter alter-danger">form wrong!</div>
-       <div [hidden]="{{userState}}" class="alter alter-danger">no such user</div>
-  </div>
 
-  <div class="form-group"> 
-    <label for="password">password</label>
-    <input id="password" type="password"
-    [(ngModel)]="password"  name="password" placeholder="yourPassword"
-    #pp="ngModel"/>
-    <div [hidden]="pp.valid||pp.pristine" class="alter alter-danger">input your password!</div>
-  </div>
 
-  <div class="form-group">
-    <label for="keep-login">keepLogin</label>
-    <input type="checkbox" id="keep-login"
-    [(ngModel)]="keepLogin" name="keepLogin" #uu="ngModel"/>    
-    <span>{{uu.valid}}</span>
-  </div>
-  <button [class.disabled]="!myForm.form.valid" 
-  [class.btn-success]="myForm.form.valid" [disabled]="!myForm.form.valid" type="submit">submit</button>
-</form>  
+<div [ngSwitch]="loginJudge()" class="login">
+	<form *ngSwitchCase="true" (ngSubmit)="onSubmit" action="post" #myForm="ngForm">
+		{{diagnostic}}
+		<h2>登录</h2>
+	  <div class="form-group"> 
+		  <label for="mail">E-mail</label>
+		  <input id="mail" type="text" placeholder="youremail@xxx.com"
+		  required
+		  [(ngModel)]="username"  name="mail" #nn="ngModel"/>
+		  <div [hidden]="nn.valid||nn.pristine" class="alter alter-danger">input your email</div>
+	  </div>
+	
+	  <div class="form-group"> 
+		<label for="password">Password</label>
+		<input id="password" type="password"
+		[(ngModel)]="password"  name="password" placeholder="yourPassword"
+		required #uu="ngModel"/>
+		<div [hidden]="uu.valid||uu.pristine" class="alter alter-danger">input your password</div>
+	  </div>
+	
+	  <button [class.disabled]="!myForm.form.valid" 
+	  [class.btn-success]="myForm.form.valid" [disabled]="!myForm.form.valid" type="submit" (click)=onSubmit(username,password)>submit</button>
+	</form>  
+	
+	<a *ngSwitchCase="false" (click)="exitLogin()" class="exit-login">退出</a>
 
-<a (click)="closeContact()">cancel</a>
 
-   -->
+	<div *ngSwitchCase="false" class="user-block">
+		<h2>用户信息</h2>
+		<div class="user-stage">
+			<div class="username">用户名:{{infoUser.username}}</div>
+			<div class="name">姓名:{{infoUser.name}}</div>
+			<div class="id">ID:{{infoUser.ID}}</div>
+			<div class="authority">权限:{{infoUser.authority}}</div>
+		</div>
+	</div>
+	
+	
+	<div *ngSwitchCase="false" class="user-collect-block">
+		<h2>收藏夹</h2>
+		<div class="add-collect-group-block">
+			<a>添加收藏夹</a>
+			<label for="add-collect-group">输入收藏夹名：</label>
+			<input name="add-collect-group" type="text"/>
+		</div>
+		<div class="user-collect">
+			<ul class="collect-group-block">
+				<li *ngFor="let collectKey of userCollectKeys; let num=index;" >
+					<h3>{{collectKey}}</h3>
+					<ul class="collect-item-block">
+						<li *ngFor="let collectLesson of userCollect[collectKey];">						
+							<a (click)="itemClick(collectLesson)"  class="lesson-wrapper"> 
+								<div class="lesson-img"><img src="{{collectLesson.picURL}}" alt=""></div>
+								<div class="lesson-info">
+									<h4>{{collectLesson.name}}</h4>
+									<h5>{{collectLesson.ID}}</h5>
+									<span class="lesson-state">{{info.collectJudge(collectLesson.ID)}}</span>
+								</div>
+							</a>
+	
+							<a (click)="cacelCollect()">取消收藏</a>
+						</li>
+						  
+					</ul>
+				</li>
+					<!-- let show=lesson.types==type.typeID; -->
+			</ul>
+			<app-book-infomation [nowState]="generalID" #info></app-book-infomation>
+		</div>
+	</div>
 
-<div class="user-block">
-	<h2>用户信息</h2>
-	<ul class="user-stage">
-		<li *ngFor="let userItem of user;">
-			<div class="username">{{userItem.username}}</div>
-			<div class="name">{{userItem.name}}</div>
-			<div class="id">{{userItem.ID}}</div>
-			<div class="authority">{{userItem.authority}}</div>
-		</li>
-	</ul>
 </div>
 
-
-<div class="user-collect-block">
-	<h2>收藏夹</h2>
-	<div class="add-collect-group-block">
-		<a>添加收藏夹</a>
-		<label for="add-collect-group">输入收藏夹名：</label>
-		<input name="add-collect-group" type="text"/>
-	</div>
-	<div class="user-collect">
-		<ul class="collect-group-block">
-			<li *ngFor="let collectKey of userCollectKeys; let num=index;" >
-				<h3>{{collectKey}}</h3>
-				<ul class="collect-item-block">
-					<li *ngFor="let collectLesson of userCollect[collectKey];">						
-						<a (click)="itemClick(collectLesson)"  class="lesson-wrapper"> 
-							<div class="lesson-img"><img src="{{collectLesson.picURL}}" alt=""></div>
-							<div class="lesson-info">
-								<h4>{{collectLesson.name}}</h4>
-								<h5>{{collectLesson.ID}}</h5>
-								<span class="lesson-state">{{info.collectJudge(collectLesson.ID)}}</span>
-							</div>
-						</a>
-
-						<a (click)="cacelCollect()">取消收藏</a>
-					</li>
-					  
-				</ul>
-			</li>
-				<!-- let show=lesson.types==type.typeID; -->
-		</ul>
-		<app-book-infomation [nowState]="generalID" #info></app-book-infomation>
-	</div>
-</div>
