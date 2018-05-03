@@ -41,7 +41,7 @@ a:hover {
 
 .add-collect-group-block label,
 .add-collect-group-block input {
-    display: none;
+    /* display: none; */
 }
 
 

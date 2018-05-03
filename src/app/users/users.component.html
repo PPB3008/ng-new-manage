@@ -42,15 +42,16 @@
 		<h2>收藏夹</h2>
 		<div class="add-collect-group-block">
 			<a>添加收藏夹</a>
-			<label for="add-collect-group">输入收藏夹名：</label>
-			<input name="add-collect-group" type="text"/>
+			<label for="add-collect-group">输入收藏夹名：</label>
+			<input name="add-collect-group" type="text" #groupname/>
+			<a (click)=addCollectGroup(groupname.value)>确定</a>
 		</div>
 		<div class="user-collect">
 			<ul class="collect-group-block">
 				<li *ngFor="let collectKey of userCollectKeys; let num=index;" >
 					<h3>{{collectKey}}</h3>
 					<ul class="collect-item-block">
-						<li *ngFor="let collectLesson of userCollect[collectKey];">						
+						<li *ngFor="let collectLesson of userCollect[collectKey]; let num1=index;">						
 							<a (click)="itemClick(collectLesson)"  class="lesson-wrapper"> 
 								<div class="lesson-img"><img src="{{collectLesson.picURL}}" alt=""></div>
 								<div class="lesson-info">
@@ -60,7 +61,7 @@
 								</div>
 							</a>
 	
-							<a (click)="cacelCollect()">取消收藏</a>
+							<a (click)="cacelCollect(num1,userCollect[collectKey])">取消收藏</a>
 						</li>
 						  
 					</ul>

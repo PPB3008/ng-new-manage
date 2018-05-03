@@ -11,17 +11,17 @@ import { Injectable } from '@angular/core';
 })
 @Injectable()
 export class UsersComponent implements OnInit {
-	private user;
-	private nowUser;
-	private userCollect;
-	private userCollectKeys;
-	private userLesson;
-	private userState:any = 111;
-	private lessonGroup = {};
-	private generalID;
-	private inputUsername;
-	private nowUsers;
-	private infoUser;
+	public user;
+	public nowUser;
+	public userCollect;
+	public userCollectKeys;
+	public userLesson;
+	public userState:any = 111;
+	public lessonGroup = {};
+	public generalID;
+	public inputUsername;
+	public nowUsers;
+	public infoUser;
 	onKey(event : any){
 		
 	}
@@ -77,7 +77,12 @@ export class UsersComponent implements OnInit {
 
 		}
 	}
-	cacelCollect() {
+	cacelCollect(itemIndex,itemGroup) {
+		itemGroup.splice(itemIndex,1);
+	}
+	addCollectGroup(item) {
+		this.userCollect[item] = [];
+		this.takeKeys();
 	}
 
 	itemClick(lesson) {

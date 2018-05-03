@@ -1,8 +1,9 @@
 .book-info {
+    display: none;
     width: 500px;
-    transition: height 2s ease-in;
     border: 2px solid blue;
     border-radius: 5px; 
+    height: 0;
 }
 
 .book-info:after {
@@ -19,8 +20,9 @@
     width: 100%;
 }
 
-.book-info-active {
-    height: 500px;
+.active {
+    display: block;
+    height: 300px;
     transition: height 2s ease-in;
 }
 

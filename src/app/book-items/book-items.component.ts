@@ -18,6 +18,7 @@ import 'rxjs/add/operator/switchMap';
 @Injectable()
 
 export class BookItemsComponent implements OnInit {
+	public queueState;
 	private shown;
 	public type:string="4";
 	private lessons;
@@ -35,44 +36,35 @@ export class BookItemsComponent implements OnInit {
 						"fourth":[]};
 	itemClick(lesson) {
 	this.generalID=lesson.ID;
-	// this.Lessons.changeState(book.ID);
 	}
 	termShow() {
 		this.terms=this.lessons.term;
 	}
 	
-	queueJudge() {
-		// this.nowTypeState = document.querySelector('#item-queue').value;
-		// this.reset();
+	queueJudge(item) {
+		this.queueState = item;
 	}
-
+	show(type,lesson) {
+		return type == lesson;
+	}
 	
-	reset(value){
-		// console.log(value);
-		return value;
-	}
-	show(lesson,type){
-		// lesson==type?this.shown=true:this.shown=false;
-		console.log(type);
-		console.log(lesson);
-		console.log(lesson==type);
-		return lesson==type;
-	}
 	termType() {
 		this.lessons.forEach(ele => {
-			// console.log(ele);
 			switch(ele.term) {
-				case 1||2:
+				case 1:
 					this.termtype.first.push(ele);
-				case 3||4:
+					break;
+				case 2:
 					this.termtype.second.push(ele);	
-				case 5||6:
+					break;
+				case 3:
 					this.termtype.third.push(ele);	
-				case 7||8:
+					break;
+				case 4:
 					this.termtype.fourth.push(ele);	
+					break;
 			}
 		})
-		console.log(this.termtype);
 	}
 	constructor(public Lessons:Lessons,
 		private userService:UserService,

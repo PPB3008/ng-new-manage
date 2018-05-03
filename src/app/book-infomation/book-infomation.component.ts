@@ -11,23 +11,30 @@ import { UserService } from '../users/user-service';
   selector: 'app-book-infomation',
   templateUrl: './book-infomation.component.html',
   styleUrls: ['./book-infomation.component.css'],
-  providers: [Lessons,UserSelectService,lessonType]
+  providers: [Lessons,UserSelectService,lessonType,UserService]
 })
+@Injectable()
 export class BookInfomationComponent implements OnInit,OnChanges{
 	@Input() nowState:number;
-	private lessons;
-	private stateLesson={ID:0,name:"",left:0,read:0,picURL:"",types:"",teacher:""};
-	private collectState:string;
-	private hasCollect:boolean=false;
-	private collect;
-	private userSelect;
-	private types;
-	private select;
+	public lessons;
+	public stateLesson={ID:0,name:"",left:0,read:0,picURL:"",types:"",teacher:""};
+	public collectState:string;
+	public hasCollect:boolean=false;
+	public collect;
+	public userSelect;
+	public types;
+	public select;
+	public nowUser;
+	returnSelect(){
+		return this.userSelect;
+	}
   	takeData(){
 		if(!this.nowState){
 			return;
 		}
 		else{
+			console.log(this.nowState);
+			console.log(this.lessons);
 			this.lessons.forEach(lessonIn=>{
 				(lessonIn.ID==this.nowState)&&(this.stateLesson={
 				ID:lessonIn.ID,
@@ -46,7 +53,7 @@ export class BookInfomationComponent implements OnInit,OnChanges{
 		this.hasCollect=false;
 		for(let x in this.collect){
 		this.hasCollect=this.collect[x].includes(ID);
-		this.hasCollect?this.collectState="您已定":this.collectState="您未定";
+		this.hasCollect?this.collectState="您已收藏":this.collectState="您未收藏";
 		}
 		return this.collectState;
 	}
@@ -64,22 +71,48 @@ export class BookInfomationComponent implements OnInit,OnChanges{
 			}      
 		}
 	}
-	selectJudge() {
-		
-	}
 	typeTransform(type) {
 		for(let x in this.types) {
 			// x.typeID == type
 		}
 	}
 	addSelect() {
-		console.log(this.userSelect.lesson);
-		if(!(Array.prototype.includes.call(this.nowState,this.userSelect.lesson))){
-			// this.userSelect.lesson.push(this.nowState);
-			console.log(this.userSelect.lesson);
+		this.returnNowUser();
+		let collectItem = this.userSelect.filter(ele => {
+			return ele.username == this.nowUser;
+		});
+		if(!(Array.prototype.includes.call(this.nowState,collectItem.lesson))){
+			collectItem[0].lesson.push(this.nowState);
 		}
 		else{
 			return;
+		}
+	}
+	selectJudge() {
+		this.returnNowUser();
+		let collectItem = this.userSelect.filter(ele => {
+			return ele.username == this.nowUser;
+		});
+		return collectItem[0].lesson.includes(this.nowState);
+	}
+
+	selectDisableJudge(id) {
+		this.returnNowUser();
+		let selectState = this.userSelect.filter(ele => {
+			return ele.username == this.nowUser;
+		});
+		return selectState[0].lesson.includes(id)?"您已选":"您未选";
+	}
+	returnNowUser() {
+		if(document.cookie.indexOf("ngmy")!=-1) {
+			let cStart = document.cookie.indexOf("ngmy:")+5;
+			let cEnd = document.cookie.indexOf("=",cStart);
+			this.nowUser = document.cookie.substring(cStart,cEnd);
+		}	
+	}
+	showSelf() {
+		if(this.nowState) {
+			return true;
 		}
 	}
 	constructor(private info_lesson:Lessons,
@@ -100,9 +133,11 @@ export class BookInfomationComponent implements OnInit,OnChanges{
 		userCollect.subscribe((data)=>this.collect=data);
 		lessonSub.subscribe((data)=>this.lessons=data);
 		// this.disableJudge();
-		lessonTypeSub.subscribe((data)=>{this.types=data;
+		lessonTypeSub.subscribe(data => {
+			this.types=data;
 			// this.typeTransform(type);
 		});
+		this.returnNowUser();
 	}
 	ngOnChanges(){
 		this.takeData();

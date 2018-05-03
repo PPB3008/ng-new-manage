@@ -10,7 +10,8 @@ a:hover {
     transform: scale(1.02);
     box-shadow: 3px 3px 5px gray;
 }
-.lesson-img img {
+.lesson-img img,
+.book-item-img img {
     width: 100%;
 }
 
@@ -26,7 +27,8 @@ a:hover {
     max-width: 200px;
 }
 
-.lesson-img {
+.lesson-img,
+.book-item-img {
     max-width:180px;
     max-height: 300px;
 }
@@ -47,3 +49,6 @@ a:hover {
     display: flex;
 }
 
+.selected {
+    border-color: blue;
+}

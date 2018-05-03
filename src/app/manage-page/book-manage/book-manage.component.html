@@ -1,3 +1,24 @@
-<p>
-  book-manage works!
-</p>
+<div [ngSwitch]="nowAuthor">
+	<div *ngSwitchCase="admin">
+			<ul>
+					<li  *ngFor="let lesson of ownSelect">
+						<a (click)="itemClick(lesson)"  class="lesson-item-wrapper"> 
+							<div class="book-item-img"><img src="{{lesson.picURL}}" alt=""></div>
+							<div class="book-item-info">
+								<h4>{{lesson.name}}</h4>
+								<h5>{{lesson.ID}}</h5>
+								<span class="book-info-state">{{info.collectJudge(lesson.ID)}}</span>
+								<span class="book-info-state">{{info.selectDisableJudge(lesson.ID)}}</span>
+							</div>
+						</a>
+					</li>
+				</ul>
+				<!-- <app-book-infomation [nowState]="generalID" #info></app-book-infomation>  -->
+	</div>
+	<div *ngSwitchCase="teacher">
+
+	</div>
+	<div *ngSwitchCase="local">
+
+	</div>
+</div>
