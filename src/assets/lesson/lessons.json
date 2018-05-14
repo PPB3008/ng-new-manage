@@ -1,8 +1,8 @@
 [
-    {"name":"经济学", "ID":12333,"term":1,"teacher":"张三","read":3058,"picURL":"../assets/images/working-with-data-in-wordpress-introduction-database-tables.jpg","left":50,"types":"A"},
-    {"name":"管理学","ID":12335,"term":3,"teacher":"张三","read":1207,"picURL":"../assets/images/working-with-data-in-wordpress-introduction-database-tables.jpg","left":12,"types":"C"},
-    {"name":"java","ID":12337,"term":2,"teacher":"张三","read":2636,"picURL":"../assets/images/working-with-data-in-wordpress-introduction-database-tables.jpg","left":10,"types":"D"},
-    {"name":"c++","ID":12338,"term":4,"teacher":"张三","read":263,"picURL":"../assets/images/working-with-data-in-wordpress-introduction-database-tables.jpg","left":10,"types":"non"},
-    {"name":"iangular5","ID":12339,"term":1,"teacher":"张三","read":2636,"picURL":"../assets/images/working-with-data-in-wordpress-introduction-database-tables.jpg","left":10,"types":"D"},
-    {"name":"iangular6","ID":12340,"term":4,"teacher":"张三","read":2636,"picURL":"../assets/images/working-with-data-in-wordpress-introduction-database-tables.jpg","left":20,"types":"F"}
+    {"name":"经济学", "ID":12333,"term":1,"teacher":"张三","read":3058,"picURL":"../assets/images/working-with-data-in-wordpress-introduction-database-tables.jpg","left":50,"start":3,"end":7,"time":"周一5-6节","types":1},
+    {"name":"管理学","ID":12335,"term":3,"teacher":"李四","read":1207,"picURL":"../assets/images/working-with-data-in-wordpress-introduction-database-tables.jpg","left":12,"start":3,"end":7,"time":"周一5-6节","types":3},
+    {"name":"java","ID":12337,"term":2,"teacher":"张三","read":2636,"picURL":"../assets/images/working-with-data-in-wordpress-introduction-database-tables.jpg","left":10,"start":3,"end":7,"time":"周一5-6节","types":4},
+    {"name":"c++","ID":12338,"term":4,"teacher":"王五","read":263,"picURL":"../assets/images/working-with-data-in-wordpress-introduction-database-tables.jpg","left":10,"start":3,"end":7,"time":"周一5-6节","types":"non"},
+    {"name":"iangular5","ID":12339,"term":1,"teacher":"张三","read":2636,"picURL":"../assets/images/working-with-data-in-wordpress-introduction-database-tables.jpg","left":10,"start":3,"time":"周一5-6节","end":7,"types":4},
+    {"name":"iangular6","ID":12340,"term":4,"teacher":"张三","read":2636,"picURL":"../assets/images/working-with-data-in-wordpress-introduction-database-tables.jpg","left":20,"start":3,"time":"周一5-6节","end":7,"types":5}
 ]

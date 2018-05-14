@@ -5,6 +5,10 @@ ul {
 a:link {
     text-decoration: none;
 }
+a {
+    text-decoration: none;
+    color: black;
+}
 
 a:hover {
     transform: scale(1.02);
@@ -51,4 +55,8 @@ a:hover {
 
 .selected {
     border-color: blue;
+}
+
+.total-item {
+    margin-left: 220px;
 }

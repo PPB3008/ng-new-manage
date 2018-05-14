@@ -1,10 +1,9 @@
 [
-    {"typeID":"A","typeName":"机械"},
-    {"typeID":"B","typeName":"经济管理"},
-    {"typeID":"C","typeName":"外国语"},
-    {"typeID":"D","typeName":"软件工程"},
-    {"typeID":"E","typeName":"电气"},
-    {"typeID":"F","typeName":"土木"},
-    {"typeID":"G","typeName":"自动化"}
-
+    {"typeID":1,"typeName":"机械"},
+    {"typeID":2,"typeName":"经济管理"},
+    {"typeID":3,"typeName":"外国语"},
+    {"typeID":4,"typeName":"软件工程"},
+    {"typeID":5,"typeName":"电气"},
+    {"typeID":6,"typeName":"土木"},
+    {"typeID":7,"typeName":"自动化"}
 ]

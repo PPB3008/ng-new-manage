@@ -1,0 +1,40 @@
+<div [ngSwitch]="nowAuthor">
+    <div *ngSwitchCase="'admin'">
+
+    </div>
+    <div *ngSwitchCase="'teacher'">
+        <h2>这里是您要上的课</h2>
+        <ul class="type-item-block">
+            <li *ngFor="let teacherSelectItem of teacherSelect">
+                <a (click)="itemClick(teacherSelectItem)"  class="lesson-item-wrapper"> 
+                    <div class="book-item-img"><img src="{{teacherSelectItem.picURL}}" alt=""></div>
+                    <div class="book-item-info">
+                        <h4>{{teacherSelectItem.name}}</h4>
+                        <h5>{{teacherSelectItem.ID}}</h5>
+                    </div>
+                </a>
+            </li>
+        </ul>
+        <app-book-infomation [nowState]="generalID" #info></app-book-infomation>
+    </div>
+    <div *ngSwitchCase="'lcoal'">    
+        <h2>这里是您选的课</h2>
+        <ul class="type-item-block">
+            <li *ngFor="let lessonSelect of nowSelect">
+                <a (click)="itemClick(lessonSelect[0])"  class="lesson-item-wrapper"> 
+                    <div class="book-item-img"><img src="{{lessonSelect[0].picURL}}" alt=""></div>
+                    <div class="book-item-info">
+                        <h4>{{lessonSelect[0].name}}</h4>
+                        <h5>{{lessonSelect[0].ID}}</h5>
+                        <span class="book-info-state">{{info.collectJudge(lessonSelect[0].ID)}}</span>
+                        <span class="book-info-state">{{info.selectDisableJudge(lessonSelect[0].ID)}}</span>
+                    </div>
+                </a>
+            </li>
+        </ul>
+        <app-book-infomation [nowState]="generalID" #info></app-book-infomation> 
+    </div>
+    <div *ngSwitchDefault>
+        <h2>您尚未登录，请先去用户中心登录！</h2>
+    </div>
+</div>

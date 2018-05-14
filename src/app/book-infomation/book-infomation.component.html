@@ -5,9 +5,11 @@
   <h2 class="book-info-title">{{stateLesson.name}}</h2>
   <p class="book-info-ID">{{stateLesson.ID}}</p>
   <h3>教师:{{stateLesson.teacher}}</h3>
-  <span class="book-info-left">名额还剩:{{stateLesson.left}}  </span>
-  <span class="book-info-read">已有{{stateLesson.read}}看过  </span>
+  <div>课程从第<span>{{stateLesson.start}}</span>周到第<span>{{stateLesson.end}}</span>周</div>
+  <span>{{stateLesson.time}}</span>
+  <span class="book-info-left">名额还剩:{{stateLesson.left}}</span>
+  <span class="book-info-read">已有{{stateLesson.read}}看过</span>
   <div class="book-info-type">{{typeTransform(stateLesson.types)}}</div>
-  <button type="button" (click)="addCollect()" [class.disabled]="disableJudge()" [disabled]="disableJudge()">收藏</button>
-  <button type="button" (click)="addSelect()" [class.disabled]="selectJudge()" [disabled]="selectJudge()">选课</button>
+  <button *ngIf="show()" type="button" (click)="addCollect()" [class.disabled]="disableJudge()" [disabled]="disableJudge()">收藏</button>
+  <button *ngIf="show()" type="button" (click)="addSelect()" [class.disabled]="selectJudge()" [disabled]="selectJudge()">选课</button>
 </div>

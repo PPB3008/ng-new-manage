@@ -1,24 +1,121 @@
 <div [ngSwitch]="nowAuthor">
-	<div *ngSwitchCase="admin">
+	<div *ngSwitchCase="'admin'">
+		<div class="type-ope">
+			<h2>类目操作</h2>
 			<ul>
-					<li  *ngFor="let lesson of ownSelect">
-						<a (click)="itemClick(lesson)"  class="lesson-item-wrapper"> 
-							<div class="book-item-img"><img src="{{lesson.picURL}}" alt=""></div>
+				<li *ngFor="let typeItem of type">
+					<div class="type-wrapper">
+						<span>{{typeItem.typeID}}</span>
+						<span>{{typeItem.typeName}}</span>
+						<div class="change-area">
+							<input type="text" #change/>
+							<a (click)="changeType(typeItem,change.value)">确定</a>
+						</div>
+					</div>
+				</li>
+			</ul>
+			
+			<div class="type-wrapper-add">
+					<label for="add">添加类型:</label>
+					<input type="text" name="add" #add/>
+					<a (click)="addType(add.value)">确定</a>
+			</div>
+		</div>
+		<div class="lesson-ope">
+			<div class="lesson-ope-wrapper">
+				<h2>所有课程</h2>
+				<ul class="type-item-block">
+					
+					<li *ngFor="let lessonItem of lesson">
+						<a (click)="itemClick(lessonItem)"  class="lesson-item-wrapper"> 
+							<div class="book-item-img"><img src="{{lessonItem.picURL}}" alt=""></div>
 							<div class="book-item-info">
-								<h4>{{lesson.name}}</h4>
-								<h5>{{lesson.ID}}</h5>
-								<span class="book-info-state">{{info.collectJudge(lesson.ID)}}</span>
-								<span class="book-info-state">{{info.selectDisableJudge(lesson.ID)}}</span>
+								<h4>{{lessonItem.name}}</h4>
+								<h5>{{lessonItem.ID}}</h5>
 							</div>
 						</a>
 					</li>
 				</ul>
-				<!-- <app-book-infomation [nowState]="generalID" #info></app-book-infomation>  -->
-	</div>
-	<div *ngSwitchCase="teacher">
+				<div [class.active]="generalID" class="book-info">
+					<div class="book-info-img">
+						<img class="book-info-img-de" src="{{stateLesson.picURL}}" alt="">
+					</div>
+					<h2 class="book-info-title">{{stateLesson.name}}</h2>
+					<p class="book-info-ID">{{stateLesson.ID}}</p>
+					<h3>教师:{{stateLesson.teacher}}</h3>
+					<div>课程从第<span>{{stateLesson.start}}</span>周  到第<span>{{stateLesson.end}}</span>周</div>
+					<br/>
+					<span>{{stateLesson.time}}</span>
+					<br/>
+					<span class="book-info-left">名额还剩:{{stateLesson.left}}</span>
+					<br/>
+					<span class="book-info-read">已经查看:{{stateLesson.read}}</span>
+					<div class="book-info-type">{{typeTransform(stateLesson.types)}}</div>
+				</div>
 
+
+				<a class="addTotal" (click)="switchAdd()">添加</a>
+				<form class="change-lesson" [class.show]=show() action="">
+					<div [ngSwitch]="returnTitle()"> 
+						<h2 *ngSwitchCase="true">修改{{generalID}}</h2>
+						<h2 *ngSwitchCase="false">添加</h2>
+					</div>
+					<h1 #title></h1>
+					<ul>
+						<li>
+							<label for="name">名称:</label>
+							<input name="name" type="text" #name/>
+							<a (click)=changeLesson(name)>确定</a>
+						</li>
+						<li>
+							<label for="ID">ID</label>
+							<input name="ID" type="text" #ID/>
+							<a (click)=changeLesson(ID)>确定</a>
+						</li>
+						<li>
+							<label for="term">学期:</label>
+							<input name="term" type="text" #term/>
+							<a (click)=changeLesson(term)>确定</a>
+						</li>
+						<li>
+							<label for="teacher">教师:</label>
+							<input name="teacher" type="text" #teacher/>
+							<a (click)=changeLesson(teacher)>确定</a>
+						</li>
+
+						<li>
+							<label for="left">名额:</label>
+							<input name="left" type="text" #left/>
+							<a (click)=changeLesson(left)>确定</a>
+						</li>
+						<li>
+							<label for="start">开始周数:</label>
+							<input name="start" type="text" #start/>
+							<a (click)=changeLesson(start)>确定</a>
+						</li>
+						<li>
+							<label for="end">结束周数:</label>
+							<input name="end" type="text" #end/>
+							<a (click)=changeLesson(end)>确定</a>
+						</li>
+						<li>
+							<label for="time">上课时间:</label>
+							<input name="time" type="text" #time/>
+							<a (click)=changeLesson(time)>确定</a>
+						</li>
+						<li>
+							<label for="type">种类:</label>
+							<input name="type"  type="text" #Itemtype/>
+							<a (click)=changeLesson(Itemtype)>确定</a>
+						</li>
+					</ul>
+					<a *ngIf="!generalID" (click)="pushLesson()">提交</a>
+				</form>
+			</div>
+		</div>
+		<div class="check-ope"></div>
 	</div>
-	<div *ngSwitchCase="local">
+	<div *ngSwitchCase="'teacher'">
 
 	</div>
 </div>

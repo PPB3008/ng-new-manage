@@ -11,6 +11,7 @@ import { Injectable } from '@angular/core';
 })
 @Injectable()
 export class UsersComponent implements OnInit {
+	public collectState = false;
 	public user;
 	public nowUser;
 	public userCollect;
@@ -25,6 +26,15 @@ export class UsersComponent implements OnInit {
 	onKey(event : any){
 		
 	}
+	openCollect(){
+		if(this.collectState) {
+			this.collectState = false;
+
+		}
+		else {
+			this.collectState = true;
+		}
+	}
 	returnNowUser() {
 		if(document.cookie.indexOf("ngmy")!=-1) {
 			let cStart = document.cookie.indexOf("ngmy:")+5;
@@ -36,7 +46,7 @@ export class UsersComponent implements OnInit {
 	 	return document.cookie.indexOf("ngmy")==-1? true:false;
 	}
 	exitLogin() {
-		this.setCookie("ppb3008","",-1);
+		this.setCookie(this.nowUser,"",-1);
 	}
 	tekeUserInfo() {
 		this.returnNowUser();

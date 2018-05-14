@@ -1,15 +1,5 @@
-<ul>
-  <li *ngFor="let book of books; let num=index" >
-    <a (click)="itemClick(book)"  class="book-item-wrapper" > 
-      <div class="book-item-img"><img src="{{book.picURL}}" alt=""></div>
-      <div class="book-item-info">
-        <h4>{{book.name}}</h4>
-        <p>{{book.ID}}</p>
-        <label for="numbers of audiunce">{{book.read}}</label>
-        <span class="book-info-state">{{info.collectJudge(book.ID)}}</span>
-      </div>
-    </a>
-  </li>
-</ul>
-<app-book-manage></app-book-manage>
-<app-user-lens></app-user-lens>
+<div class="manage-wrapper">
+    <app-book-manage></app-book-manage>
+    <app-user-lens></app-user-lens>
+</div>
+

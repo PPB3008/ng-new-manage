@@ -2,7 +2,7 @@
 	<option value="terms">terms</option>	
 	<option value="lessonTypes" selected="selected">lessonTypes</option>
 </select>
-<div [ngSwitch]="queueState">
+<div class="total-item" [ngSwitch]="queueState">
 	<div *ngSwitchCase="'lessonTypes'">
 		<ul>
 			<li class="type-block" *ngFor="let type of lessonTypes;let queueNum=index" >
@@ -10,14 +10,14 @@
 				<h3>{{type.typeName}}</h3>
 				<ul class="type-item-block">
 					<li *ngFor="let lesson of lessons; let num=index;">
-						<div *ngIf="show(type.typeID,lesson.types)" class="lesson-wrapper">
+						<div *ngIf="showLesson(type,lesson)" class="lesson-wrapper">
 							<a (click)="itemClick(lesson)"  class="lesson-item-wrapper"> 
 								<div class="book-item-img"><img src="{{lesson.picURL}}" alt=""></div>
 								<div class="book-item-info">
 									<h4>{{lesson.name}}</h4>
 									<h5>{{lesson.ID}}</h5>
-									<span class="book-info-state">{{info.collectJudge(lesson.ID)}}</span>
-									<span class="book-info-state">{{info.selectDisableJudge(lesson.ID)}}</span>
+									<span *ngIf="show()" class="book-info-state">{{info.collectJudge(lesson.ID)}}</span>
+									<span *ngIf="show()" class="book-info-state">{{info.selectDisableJudge(lesson.ID)}}</span>
 								</div>
 							</a>
 						</div>
@@ -38,8 +38,8 @@
 								<div class="lesson-info">
 									<h4>{{lessonItem.name}}</h4>
 									<h5>{{lessonItem.ID}}</h5>
-									<span class="lesson-state">{{info.collectJudge(lessonItem.ID)}}</span>
-									<span class="book-info-state">{{info.selectDisableJudge(lessonItem.ID)}}</span>
+									<span *ngIf="show()" class="lesson-state">{{info.collectJudge(lessonItem.ID)}}</span>
+									<span *ngIf="show()" class="book-info-state">{{info.selectDisableJudge(lessonItem.ID)}}</span>
 								</div>
 							</a>
 					</li>
@@ -54,8 +54,8 @@
 							<div class="lesson-info">
 								<h4>{{lessonItem.name}}</h4>
 								<h5>{{lessonItem.ID}}</h5>
-								<span class="lesson-state">{{info.collectJudge(lessonItem.ID)}}</span>
-								<span class="book-info-state">{{info.selectDisableJudge(lessonItem.ID)}}</span>
+								<span *ngIf="show()" class="lesson-state">{{info.collectJudge(lessonItem.ID)}}</span>
+								<span *ngIf="show()" class="book-info-state">{{info.selectDisableJudge(lessonItem.ID)}}</span>
 							</div>
 						</a>
 					</li>
@@ -70,8 +70,8 @@
 							<div class="lesson-info">
 								<h4>{{lessonItem.name}}</h4>
 								<h5>{{lessonItem.ID}}</h5>
-								<span class="lesson-state">{{info.collectJudge(lessonItem.ID)}}</span>
-								<span class="book-info-state">{{info.selectDisableJudge(lessonItem.ID)}}</span>
+								<span *ngIf="show()" class="lesson-state">{{info.collectJudge(lessonItem.ID)}}</span>
+								<span *ngIf="show()" class="book-info-state">{{info.selectDisableJudge(lessonItem.ID)}}</span>
 							</div>
 						</a>
 					</li>
@@ -81,13 +81,13 @@
 				<h3>第四学期</h3>
 				<ul class="type-item-block">
 					<li *ngFor="let lessonItem of termtype.fourth">
-							<a   (click)="itemClick(lessonItem)"  class="lesson-item-wrapper"> 
+							<a (click)="itemClick(lessonItem)"  class="lesson-item-wrapper"> 
 								<div class="lesson-img"><img src="{{lessonItem.picURL}}" alt=""></div>
 								<div class="lesson-info">
 									<h4>{{lessonItem.name}}</h4>
 									<h5>{{lessonItem.ID}}</h5>
-									<span class="lesson-state">{{info.collectJudge(lessonItem.ID)}}</span>
-									<span class="book-info-state">{{info.selectDisableJudge(lessonItem.ID)}}</span>
+									<span *ngIf="show()" class="lesson-state">{{info.collectJudge(lessonItem.ID)}}</span>
+									<span *ngIf="show()"  class="book-info-state">{{info.selectDisableJudge(lessonItem.ID)}}</span>
 								</div>
 							</a>
 					</li>

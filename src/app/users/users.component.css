@@ -6,6 +6,10 @@ a:link {
     text-decoration: none;
 }
 
+a {
+    text-decoration: none;
+    color: black;
+}
 a:hover {
     transform: scale(1.02);
     box-shadow: 3px 3px 5px gray;
@@ -44,8 +48,12 @@ a:hover {
     /* display: none; */
 }
 
-
-
+.user-collect-block-wrapper {
+    display: none;
+}
+.user-collect-block-wrapper-active {
+    display: block;
+}
 
 input.ng-valid{
     border-left: 5px solid green;

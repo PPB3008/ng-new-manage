@@ -19,6 +19,7 @@ import 'rxjs/add/operator/switchMap';
 
 export class BookItemsComponent implements OnInit {
 	public queueState;
+	public nowUser;
 	private shown;
 	public type:string="4";
 	private lessons;
@@ -34,6 +35,8 @@ export class BookItemsComponent implements OnInit {
 						"second":[],
 						"third":[],
 						"fourth":[]};
+
+
 	itemClick(lesson) {
 	this.generalID=lesson.ID;
 	}
@@ -44,10 +47,12 @@ export class BookItemsComponent implements OnInit {
 	queueJudge(item) {
 		this.queueState = item;
 	}
-	show(type,lesson) {
-		return type == lesson;
+	show() {
+		return document.cookie.indexOf("ngmy")!=-1?true:false;
 	}
-	
+	showLesson(type,lesson){
+		return type.typeID == lesson.types;
+	}
 	termType() {
 		this.lessons.forEach(ele => {
 			switch(ele.term) {

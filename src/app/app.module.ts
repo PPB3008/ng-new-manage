@@ -18,7 +18,7 @@ import { UsersComponent } from './users/users.component';
 import { ManagePageComponent } from './manage-page/manage-page.component';
 import { BookManageComponent } from './manage-page/book-manage/book-manage.component';
 import { UserLensComponent } from './manage-page/user-lens/user-lens.component';
-
+import { checkServer } from './check-server';
 
 
 
@@ -45,7 +45,7 @@ import { UserLensComponent } from './manage-page/user-lens/user-lens.component';
     AppRoutingModule,
     bookTypesRouting
   ],
-  providers: [Lessons,lessonType],
+  providers: [Lessons,lessonType,checkServer],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

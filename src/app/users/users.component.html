@@ -5,15 +5,15 @@
 		{{diagnostic}}
 		<h2>登录</h2>
 	  <div class="form-group"> 
-		  <label for="mail">E-mail</label>
-		  <input id="mail" type="text" placeholder="youremail@xxx.com"
+		  <label for="mail">Username:</label>
+		  <input id="mail" type="text" placeholder="username"
 		  required
 		  [(ngModel)]="username"  name="mail" #nn="ngModel"/>
-		  <div [hidden]="nn.valid||nn.pristine" class="alter alter-danger">input your email</div>
+		  <div [hidden]="nn.valid||nn.pristine" class="alter alter-danger">input your username</div>
 	  </div>
 	
 	  <div class="form-group"> 
-		<label for="password">Password</label>
+		<label for="password">Password:</label>
 		<input id="password" type="password"
 		[(ngModel)]="password"  name="password" placeholder="yourPassword"
 		required #uu="ngModel"/>
@@ -39,36 +39,38 @@
 	
 	
 	<div *ngSwitchCase="false" class="user-collect-block">
-		<h2>收藏夹</h2>
-		<div class="add-collect-group-block">
-			<a>添加收藏夹</a>
-			<label for="add-collect-group">输入收藏夹名：</label>
-			<input name="add-collect-group" type="text" #groupname/>
-			<a (click)=addCollectGroup(groupname.value)>确定</a>
-		</div>
-		<div class="user-collect">
-			<ul class="collect-group-block">
-				<li *ngFor="let collectKey of userCollectKeys; let num=index;" >
-					<h3>{{collectKey}}</h3>
-					<ul class="collect-item-block">
-						<li *ngFor="let collectLesson of userCollect[collectKey]; let num1=index;">						
-							<a (click)="itemClick(collectLesson)"  class="lesson-wrapper"> 
-								<div class="lesson-img"><img src="{{collectLesson.picURL}}" alt=""></div>
-								<div class="lesson-info">
-									<h4>{{collectLesson.name}}</h4>
-									<h5>{{collectLesson.ID}}</h5>
-									<span class="lesson-state">{{info.collectJudge(collectLesson.ID)}}</span>
-								</div>
-							</a>
-	
-							<a (click)="cacelCollect(num1,userCollect[collectKey])">取消收藏</a>
+		<a (click)="openCollect()">收藏夹</a>
+		<div [class.user-collect-block-wrapper-active]="collectState" class="user-collect-block-wrapper">
+				<h2>收藏夹</h2>
+				<div  class="add-collect-group-block">
+					<label for="add-collect-group">输入要添加的收藏夹名：</label>
+					<input name="add-collect-group" type="text" #groupname/>
+					<a (click)=addCollectGroup(groupname.value)>确定</a>
+				</div>
+				<div class="user-collect">
+					<ul class="collect-group-block">
+						<li *ngFor="let collectKey of userCollectKeys; let num=index;" >
+							<h3>{{collectKey}}</h3>
+							<ul class="collect-item-block">
+								<li *ngFor="let collectLesson of userCollect[collectKey]; let num1=index;">						
+									<a (click)="itemClick(collectLesson)"  class="lesson-wrapper"> 
+										<div class="lesson-img"><img src="{{collectLesson.picURL}}" alt=""></div>
+										<div class="lesson-info">
+											<h4>{{collectLesson.name}}</h4>
+											<h5>{{collectLesson.ID}}</h5>
+											<span class="lesson-state">{{info.collectJudge(collectLesson.ID)}}</span>
+										</div>
+									</a>
+			
+									<a (click)="cacelCollect(num1,userCollect[collectKey])">取消收藏</a>
+								</li>
+								  
+							</ul>
 						</li>
-						  
+							<!-- let show=lesson.types==type.typeID; -->
 					</ul>
-				</li>
-					<!-- let show=lesson.types==type.typeID; -->
-			</ul>
-			<app-book-infomation [nowState]="generalID" #info></app-book-infomation>
+					<app-book-infomation [nowState]="generalID" #info></app-book-infomation>
+				</div>
 		</div>
 	</div>
 

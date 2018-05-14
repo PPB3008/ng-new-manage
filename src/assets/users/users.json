@@ -3,6 +3,7 @@
     {"ID":16028,"password":"12341234","username":"ppb3009","name":"lee","authority":"admin"},
     {"ID":1601,"password":"12341234","username":"user2","name":"lee","authority":"lcoal"},
     {"ID":1602,"password":"12341234","username":"user3","name":"lee","authority":"lcoal"},
-    {"ID":1603,"password":"12341234","username":"user4","name":"lee","authority":"teacher"},
-    {"ID":1604,"password":"12341234","username":"user5","name":"lee","authority":"teacher"}
+    {"ID":1603,"password":"12341234","username":"user4","name":"王五","authority":"teacher"},
+    {"ID":1604,"password":"12341234","username":"user5","name":"张三","authority":"teacher"},
+    {"ID":1605,"password":"12341234","username":"user6","name":"李四","authority":"teacher"}
 ]
