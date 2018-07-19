@@ -8,7 +8,7 @@ import { UserService } from '../users/user-service';
 import { lessonType } from '../book-types/lesson-types';
 import { UserSelectService } from '../manage-page/user-lens/user-select.service';
 // import { BookItemsRouting } from './book-items-router';
-import 'rxjs/add/operator/switchMap';
+// import 'rxjs/add/operator/switchMap';
 @Component({
 	selector: 'app-book-items',
 	templateUrl: './book-items.component.html',
