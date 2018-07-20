@@ -10,43 +10,43 @@ import { UserService } from '../users/user-service';
 @Component({
   selector: 'app-book-infomation',
   templateUrl: './book-infomation.component.html',
-  styleUrls: ['./book-infomation.component.css'],
+  styleUrls: ['./book-infomation.component.scss'],
   providers: [Lessons,UserSelectService,lessonType,UserService]
 })
 @Injectable()
 export class BookInfomationComponent implements OnInit,OnChanges{
-	@Input() nowState:number;
-	public lessons;
-	public stateLesson={ID:0,name:"",left:0,read:0,picURL:"",types:"",teacher:"",start:0,end:0,time:""};
-	public collectState:string;
-	public hasCollect:boolean=false;
-	public collect;
-	public userSelect;
-	public types;
-	public select;
-	public nowUser;
-  	takeData(){
+	@Input() 
+	nowState:number;
+	lessons;
+	stateLesson={ID:0,name:"",left:0,read:0,picURL:"",types:"",teacher:"",start:0,end:0,time:""};
+	collectState:string;
+	hasCollect:boolean=false;
+	collect;
+	userSelect;
+	types;
+	select;
+	nowUser;
+  	async takeData () {
 		if(!this.nowState){
 			return;
 		}
-		else{
-			this.lessons.forEach(lessonIn=>{
-				(lessonIn.ID==this.nowState)&&(this.stateLesson={
-				ID:lessonIn.ID,
-				name:lessonIn.name,
-				left:lessonIn.left,
-				read:lessonIn.read,
-				picURL:lessonIn.picURL,
-				types:lessonIn.types,
-				teacher:lessonIn.teacher,
-				start:lessonIn.start,
-				end:lessonIn.end,
-				time:lessonIn.time});
-			})
+		const lessonIn = this.lessons.filter(lessonIn => {
+			return lessonIn.ID === this.nowState;
+		});
+		this.stateLesson = {
+			ID: lessonIn.ID,
+			name: lessonIn.name,
+			left: lessonIn.left,
+			read: lessonIn.read,
+			picURL: lessonIn.picURL,
+			types: lessonIn.types,
+			teacher: lessonIn.teacher,
+			start: lessonIn.start,
+			end: lessonIn.end,
+			time: lessonIn.time
 		}
-		return;
 	}
-	collectJudge(ID) {
+	collectJudge (ID) {
 		if(this.nowUser){
 			this.collectState=undefined;
 			this.hasCollect=false;

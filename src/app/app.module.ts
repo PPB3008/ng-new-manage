@@ -35,7 +35,7 @@ import { checkServer } from './check-server';
     UsersComponent,
     ManagePageComponent,
     BookManageComponent,
-    UserLensComponent
+    UserLensComponent,
   ],
   imports: [
     FormsModule,

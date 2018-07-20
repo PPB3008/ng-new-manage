@@ -7,7 +7,7 @@ import { UserService } from '../../users/user-service';
 @Component({
 	selector: 'app-user-lens',
 	templateUrl: './user-lens.component.html',
-	styleUrls: ['./user-lens.component.css'],
+	styleUrls: ['./user-lens.component.scss'],
 	providers: [UserSelectService,UserService]
 })
 export class UserLensComponent implements OnInit{

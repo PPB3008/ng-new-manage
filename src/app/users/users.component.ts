@@ -6,7 +6,7 @@ import { Injectable } from '@angular/core';
 @Component({
 	selector: 'app-users',
 	templateUrl: './users.component.html',
-	styleUrls: ['./users.component.css'],
+	styleUrls: ['./users.component.scss'],
 	providers: [UserService,Lessons]
 })
 @Injectable()

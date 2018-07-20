@@ -12,7 +12,7 @@ import { UserSelectService } from '../manage-page/user-lens/user-select.service'
 @Component({
 	selector: 'app-book-items',
 	templateUrl: './book-items.component.html',
-	styleUrls: ['./book-items.component.css'],
+	styleUrls: ['./book-items.component.scss'],
 	providers:[Lessons,UserService,UserSelectService]
 })
 @Injectable()

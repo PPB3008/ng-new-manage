@@ -1,0 +1,20 @@
+.book-root {
+    display: flex;
+    height: 1080px;
+    .app-book-nav {
+        flex: 2;
+        height: 100%;
+    }
+    .show-area {
+      flex: 8;
+      padding: 30px;
+    }
+}
+
+
+.contact-btn {
+    background: blue;
+    color: white;
+    font-weight: bold;
+}
+

@@ -8,7 +8,7 @@ import { lessonType } from '../../book-types/lesson-types';
 @Component({
   selector: 'app-book-manage',
   templateUrl: './book-manage.component.html',
-  styleUrls: ['./book-manage.component.css'],
+  styleUrls: ['./book-manage.component.scss'],
   providers: [BookInfomationComponent,UserService,UserSelectService]
 })
 export class BookManageComponent implements OnInit {
